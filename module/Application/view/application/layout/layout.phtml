@@ -1,2 +1,112 @@
-layout
-    <?php echo $this->content; ?>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+       <?php echo $this->headTitle(); ?>
+    
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <link type="text/css" rel="stylesheet" href="<?php echo $this->serverUrl('/skins/frontend/dinamoelektrik/css/select2.css');?>">
+        <link type="text/css" rel="stylesheet" href="<?php echo $this->serverUrl('/skins/frontend/dinamoelektrik/css/dinamo.css');?>">
+         <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+            <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+    <body>
+        <!--[if lt IE 9]>
+            <p class="chromeframe">Ne yazık ki <strong>zamanı geçmiş</strong> bir tarayıcı kullanıyorsunuz. Lütfen <a href="http://browsehappy.com/">tarayıcınızı güncelleyin</a> ya da <a href="http://www.google.com/chromeframe/?redirect=true">Google Chrome Frame</a> yükleyerek deneyiminizi artırın.</p>
+        <![endif]-->
+           <div class="wrapper">
+            <header>
+                <div class="top-menu">
+                    <div class="container clearfix">
+                        <ul class="customer-type">
+                            <li class="active"><a href="#">BİREYSEL</a></li>
+                            <li><a href="#">KURUMSAL</a></li>
+                        </ul>
+                        <ul class="online-menu clearfix">
+                             <li><a href="#"><span class="ico-basvur"></span>Hemen Başvur</a></li>
+                             <li><a href="#"><span class="ico-basvur"></span>Ödeme Yap</a></li>
+                             <li><a href="#"><span class="ico-online"></span>Online İşlem Merkezi</a></li>
+                         </ul>
+                       <!--  <a href="#" class="btn-gray right"><span class="ico-online"></span>Online İşlem Merkezi</a>
+                        <a href="#" class="btn-gray right"><span class="ico-basvur"></span>Hemen Başvur</a> -->
+                    </div>
+                </div>
+
+                <nav>
+                    <div class="container">
+                        <a href="<?php echo $this->serverUrl();?>" class="logo">Dinamo Eleltrik</a>
+                        <ul>
+                            <li><a href="kesfet.html">KEŞFET</a></li>
+                            <li><a href="#">TARİFELER</a></li>
+                            <li class="dd-menu">
+                                <a href="#">KAMPANYALAR</a>
+                                <div class="dropdown_fullwidth">
+                                    <ul>
+                                        <li><a href="#">KAMPANYA ADI BİR</a></li>
+                                        <li><a href="#">KAMPANYA ADI İKİ</a></li>
+                                        <li><a href="#">KAMPANYA ADI ÜÇ</a></li>
+                                    </ul>
+
+
+                                </div>
+                            </li>
+                            <li><a href="#">DİNAMOLU OLMAK İSTİYORUM</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <div class="container">
+    <?php 
+    //echo $this->serverUrl(true); 
+    echo $this->content;
+   ?>
+     <footer class="clearfix">
+                <div class="social">
+                    <div class="container clearfix">
+                        <div class="left">
+                            <a href="#" class="dinamo-icon-mail"></a>
+                            <a href="#" class="dinamo-icon-fb"></a>
+                            <a href="#" class="dinamo-icon-tw"></a>
+                            <a href="#" class="dinamo-icon-gp"></a>
+                            <a href="#" class="dinamo-icon-yt"></a>
+                        </div>
+                        <a class="btn-black right" href="#">BAYİMİZ OLUN</a>
+                    </div>
+                </div>
+                <nav class="container clearfix">
+                    <ul>
+                        <li><a href="#">HAKKIMIZDA</a></li>
+                        <li><a href="#">HABERLER</a></li>
+                        <li><a href="#">BASIN ODASI</a></li>
+                        <li><a href="#">SIKÇA SORULAN SORULAR</a></li>
+                        <li><a href="#">İLETİŞİM</a></li>
+                    </ul>
+                </nav>
+                <div class="container">
+                    <div class="phone">0 800 700 60 50</div>
+                    <div class="copy">Dinamo Elektrik bir <span class="dinamo-icon-proper"></span> kuruluşudur.</div>
+                    <br clear="all">
+                    <br clear="all">
+                </div>
+            </footer>
+
+        </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="<?php echo $this->serverUrl('/skins/frontend/dinamoelektrik/js/jquery-1.10.2.min.js');?>"><\/script>')</script>
+        <script src="<?php echo $this->serverUrl('/skins/frontend/dinamoelektrik/js/jquery.cycle2.min.js');?>"></script>
+        <script src="<?php echo $this->serverUrl('/skins/frontend/dinamoelektrik/js/select2.min.js');?>"></script>
+        <script src="<?php echo $this->serverUrl('/skins/frontend/dinamoelektrik/js/placeholders.min.js');?>"></script>
+        <script src="<?php echo $this->serverUrl('/skins/frontend/dinamoelektrik/js/scripts.js');?>"></script>
+
+    </body>
+</html>
