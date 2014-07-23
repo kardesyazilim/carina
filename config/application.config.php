@@ -1,10 +1,12 @@
 <?php
-
+require_once 'database.config.php';
 return array(
     'modules' => array(
         'ZendDeveloperTools',
         'DoctrineModule',
         'DoctrineORMModule',
+        'OcraServiceManager',
+        'BjyProfiler',
         'Application',
     ),
     'module_listener_options' => array(

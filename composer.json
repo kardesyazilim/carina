@@ -41,7 +41,10 @@
     "satooshi/php-coveralls": "~0.6",
     "doctrine/common": "~2.4",
     "doctrine/doctrine-module": "~0.8",
-    "doctrine/doctrine-orm-module": "~0.8"
+    "doctrine/doctrine-orm-module": "~0.8",
+    "ocramius/ocra-service-manager": "dev-master",
+    "bjyoungblood/bjy-profiler": "dev-master"
+
   },
   "suggest": {
     "zendframework/zend-developer-tools": "if you want to show information about the roles",
