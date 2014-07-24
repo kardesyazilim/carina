@@ -1,79 +1,83 @@
 <?php
-/*
+
 return array(
     'doctrine' => array(
+        'orm_autoload_annotations' => true,
+
         'connection' => array(
             'orm_default' => array(
-                'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
+                'configuration' => 'orm_default',
+                'eventmanager'  => 'orm_default',
+
                 'params' => array(
-                    'host' => 'localhost',
-                    'port' => '3306',
-                    'user' => 'root',
+                    'host'     => 'localhost',
+                    'port'     => '3306',
+                    'user'     => 'root',
                     'password' => 'qweytr',
-                    'dbname' => 'dinamo_master',
-                ),
-                'configuration' => array(
-                'orm_default' => array(
-                'proxy_dir' => 'data/DoctrineORMModule/Proxy',
-                'proxy_namespace' => 'DoctrineORMModule\Proxy',
-            ),    
-        ),
-
+                    'dbname'   => 'dinamo_master',
+                )
             ),
         ),
-        
 
-    ),
-);*/
-return array(
-    'doctrine' => array(
-        'connection' => array(
-            'odm_default' => array(
-                'server'    => 'localhost',
-                'port'      => '3306',
-                'dbname'    => 'dinamo_master',
-                'options'   => array()
-            ),
-        ),
         'configuration' => array(
-            'odm_default' => array(
-                'metadata_cache'     => 'array',
-                'driver'             => 'odm_default',
-                'generate_proxies'   => true,
-                'proxy_dir'          => 'data/DoctrineMongoODMModule/Proxy',
-                'proxy_namespace'    => 'DoctrineMongoODMModule\Proxy',
-                'generate_hydrators' => true,
-                'hydrator_dir'       => 'data/DoctrineMongoODMModule/Hydrator',
-                'hydrator_namespace' => 'DoctrineMongoODMModule\Hydrator',
-                'default_db'         => 'zf2odm',
-                'filters'            => array()
+            'orm_default' => array(
+                'metadata_cache'    => 'array',
+                'query_cache'       => 'array',
+                'result_cache'      => 'array',
+
+                'driver'            => 'orm_default',
+
+                'generate_proxies'  => true,
+                'proxy_dir'         => '/data/DoctrineORMModule/Proxy',
+                'proxy_namespace'   => 'DoctrineProxies'
             )
         ),
-        'driver' => array(
-            'odm_default' => array(
-                'drivers' => array(
-                    'Application\Document' => 'aplikasi'
-                )
-            ),
-            'aplikasi' => array(
-                'class' => 'Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver',
-                'cache' => 'array',
-                'paths' => array(
-                    'module/Application/src/Application/Document'
-                )
+
+        /*'driver' => array(
+            'orm_default' => array(
+                'class'   => 'Doctrine\ORM\Mapping\Driver\XmlDriver',
+                'paths' => array(__DIR__.'/../doctrine/xml')
+            )
+        ),*/
+
+        'entitymanager' => array(
+            'orm_default' => array(
+                'connection'    => 'orm_default',
+                'configuration' => 'orm_default'
             )
         ),
-        'documentmanager' => array(
-            'odm_default' => array(
-                'connection'    => 'odm_default',
-                'configuration' => 'odm_default',
-                'eventmanager' => 'odm_default'
-            )
-        ),
+
         'eventmanager' => array(
-            'odm_default' => array(
-                'subscribers' => array()
-            )
+            'orm_default' => array()
+        ),
+
+        'sql_logger_collector' => array(
+            'orm_default' => array(),
+        ),
+
+        'entity_resolver' => array(
+            'orm_default' => array()
+        )
+    ),
+
+    // zendframework/zend-developer-tools specific settings
+
+    'view_manager' => array(
+        'template_map' => array(
+            'zend-developer-tools/toolbar/doctrine-orm' => __DIR__ . '/../view/zend-developer-tools/toolbar/doctrine-orm.phtml',
+        ),
+    ),
+
+    'zenddevelopertools' => array(
+        'profiler' => array(
+            'collectors' => array(
+                'orm_default' => 'doctrine.sql_logger_collector.orm_default',
+            ),
+        ),
+        'toolbar' => array(
+            'entries' => array(
+                'orm_default' => 'zend-developer-tools/toolbar/doctrine-orm',
+            ),
         ),
     ),
 );
