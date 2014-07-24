@@ -16,3 +16,7 @@ orm:run-dql Executes arbitrary DQL directly from the command line.
 orm:schema-tool:create Processes the schema and either create it directly on EntityManager Storage Connection or generate the SQL output.
 orm:schema-tool:drop Processes the schema and either drop the database schema of EntityManager Storage Connection or generate the SQL output.
 orm:schema-tool:update Processes the schema and either update the database schema of EntityManager Storage Connection or generate the SQL output.
+
+
+
+./vendor/doctrine/doctrine-module/bin/doctrine-module orm:convert-mapping --namespace="Application\\Entity\\" --force  --from-database annotation ./module/Application/src/

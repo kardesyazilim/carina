@@ -1,17 +1,31 @@
 <div class="container">
-                <div class="cycle-slideshow">
-                    <button class="prev" data-cycle-cmd="prev">Prev</button>
-                    <div class="cycle-overlay"></div>
-                    <img src="<?php echo $this->serverUrl('/media/cms/slider1.jpg');?>" data-cycle-title="Yaşam tarzınıza uygun elektrik!"
+    <div class="cycle-slideshow">
+        <button class="prev" data-cycle-cmd="prev">Prev</button>
+        <div class="cycle-overlay"></div>
+        <img src="<?php echo $this->serverUrl('/media/cms/slider1.jpg');?>" data-cycle-title="Yaşam tarzınıza uygun elektrik!"
         data-cycle-desc="Dinamo, ihtiyaçlarınıza uygun elektriği hiçbir altyapı değişikliği gerekmeden size sunuyor. ">
-                    <img src="http://lorempixel.com/940/500/technics/1/" data-cycle-title="Redwoods"
+        <img src="http://lorempixel.com/940/500/technics/1/" data-cycle-title="Redwoods"
         data-cycle-desc="Muir Woods National Monument">
-                    <img src="http://lorempixel.com/940/500/technics/2/" data-cycle-title="Angel Island"
+        <img src="http://lorempixel.com/940/500/technics/2/" data-cycle-title="Angel Island"
         data-cycle-desc="San Franscisco Bay">
-                    <img src="http://lorempixel.com/940/500/technics/3/" data-cycle-title="Raquette Lake"
+        <img src="http://lorempixel.com/940/500/technics/3/" data-cycle-title="Raquette Lake"
         data-cycle-desc="Adirondack State Park">
-                    <div class="cycle-pager"></div>
-                    <button class="next" data-cycle-cmd="next">Next</button>
-                </div>
-                <hr>
+        <div class="cycle-pager"></div>
+        <button class="next" data-cycle-cmd="next">Next</button>
+    </div>
+    <hr>
+</div>
+<div>
+  <?php if (isset($users)) : ?>
+          
+                <?php foreach($users as $deneme): ?>
+                   
+                    
+                        <?php echo $deneme->getId(); ?>
+                        <?php echo $deneme->getFullName(); ?>
+                       
+                   
+                <?php endforeach; ?>
+               
+                <?php endif; ?>
 </div>
