@@ -27,7 +27,7 @@ return array(
 
                 'driver'            => 'orm_default',
 
-                'generate_proxies'  => true,
+                'generate_proxies'  => false,
                 'proxy_dir'         => '/data/DoctrineORMModule/Proxy',
                 'proxy_namespace'   => 'DoctrineProxies'
             )

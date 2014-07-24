@@ -40,8 +40,8 @@
     "squizlabs/php_codesniffer": "1.4.*",
     "satooshi/php-coveralls": "~0.6",
     "doctrine/common": "~2.4",
-    "doctrine/doctrine-module": "~0.8",
-    "doctrine/doctrine-orm-module": "~0.8",
+    "doctrine/doctrine-module": "dev-master",
+    "doctrine/doctrine-orm-module": "dev-master",
     "ocramius/ocra-service-manager": "dev-master",
     "bjyoungblood/bjy-profiler": "dev-master"
 
