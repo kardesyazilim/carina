@@ -8,7 +8,8 @@ return array(
         'OcraServiceManager',
         'BjyProfiler',
         'Application',
-//        'ZfcRbac',
+        'ZfcRbac',
+
     ),
     'module_listener_options' => array(
         'config_glob_paths' => array(
@@ -17,6 +18,7 @@ return array(
         'module_paths' => array(
             './module',
             './vendor',
+            './vendor/zf-commons',
 
         ),
     ),
