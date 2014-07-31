@@ -11,7 +11,7 @@
  Target Server Version : 50617
  File Encoding         : utf-8
 
- Date: 07/31/2014 10:59:21 AM
+ Date: 07/31/2014 11:32:28 AM
 */
 
 SET NAMES utf8;
@@ -115,12 +115,49 @@ CREATE TABLE `contents_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+--  Table structure for `core_type`
+-- ----------------------------
+DROP TABLE IF EXISTS `core_type`;
+CREATE TABLE `core_type` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `core_type_name` varchar(100) DEFAULT NULL,
+  `core_type_value` varchar(100) DEFAULT NULL,
+  `status` int(1) DEFAULT NULL,
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Records of `core_type`
+-- ----------------------------
+BEGIN;
+INSERT INTO `core_type` VALUES ('1', 'Sabit İçerik', 'contents', '1', '2014-07-31 11:31:04', '2014-07-31 11:31:31'), ('2', 'Kampanya Detayı', 'campains', '1', '2014-07-31 11:31:26', '2014-07-31 11:31:26'), ('3', 'Tarife Detayı', 'campains', '1', '2014-07-31 11:31:47', '2014-07-31 11:31:47'), ('4', 'Form Sayfası', 'forms', '1', '2014-07-31 11:32:07', '2014-07-31 11:32:07');
+COMMIT;
+
+-- ----------------------------
 --  Table structure for `core_url`
 -- ----------------------------
 DROP TABLE IF EXISTS `core_url`;
 CREATE TABLE `core_url` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `core_url_key` varchar(100) DEFAULT NULL,
   `status` int(1) DEFAULT '0',
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Table structure for `core_url_reindex`
+-- ----------------------------
+DROP TABLE IF EXISTS `core_url_reindex`;
+CREATE TABLE `core_url_reindex` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `core_url_id` int(11) DEFAULT NULL,
+  `core_url_type_id` int(11) unsigned DEFAULT NULL,
+  `type_id` int(1) DEFAULT '0',
+  `status` int(1) DEFAULT NULL,
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
