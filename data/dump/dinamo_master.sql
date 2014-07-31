@@ -11,7 +11,7 @@
  Target Server Version : 50617
  File Encoding         : utf-8
 
- Date: 07/31/2014 16:59:56 PM
+ Date: 07/31/2014 17:25:16 PM
 */
 
 SET NAMES utf8;
@@ -61,6 +61,7 @@ DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `category_name` varchar(100) DEFAULT NULL,
+  `level` int(1) DEFAULT '0',
   `category_group_id` int(11) unsigned DEFAULT NULL,
   `parent_id` int(11) unsigned DEFAULT NULL,
   `core_url_id` int(11) unsigned DEFAULT NULL,
@@ -78,7 +79,7 @@ CREATE TABLE `categories` (
 --  Records of `categories`
 -- ----------------------------
 BEGIN;
-INSERT INTO `categories` VALUES ('1', 'ROOT', null, null, null, '0', '2014-07-31 16:55:02', '2014-07-31 16:55:36');
+INSERT INTO `categories` VALUES ('1', 'ROOT', '0', null, null, null, '0', '2014-07-31 16:55:02', '2014-07-31 16:55:36');
 COMMIT;
 
 -- ----------------------------
@@ -217,12 +218,20 @@ CREATE TABLE `core_url_reindex` (
 DROP TABLE IF EXISTS `core_url_type`;
 CREATE TABLE `core_url_type` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `core_url_type_name` varchar(100) DEFAULT NULL,
+  `core_url_type_key` varchar(100) DEFAULT NULL,
+  `core_url_type_value` varchar(100) DEFAULT NULL,
   `status` int(1) DEFAULT '0',
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UNQ_core_url_type_core_url_type_name` (`core_url_type_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  UNIQUE KEY `UNQ_core_url_type_core_url_type_name` (`core_url_type_key`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Records of `core_url_type`
+-- ----------------------------
+BEGIN;
+INSERT INTO `core_url_type` VALUES ('1', 'single_page', 'Single Page', '1', '2014-07-31 17:18:32', '2014-07-31 17:18:32'), ('2', 'multi_page', 'Multi Page', '1', '2014-07-31 17:18:56', '2014-07-31 17:18:56'), ('3', 'contact_form', 'Contact Form', '1', '2014-07-31 17:19:13', '2014-07-31 17:19:13'), ('4', 'spec_form', 'Spec Form', '1', '2014-07-31 17:19:28', '2014-07-31 17:19:28'), ('5', 'multi_step_form', 'Multi Step Form', '1', '2014-07-31 17:19:43', '2014-07-31 17:19:43');
+COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
