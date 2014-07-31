@@ -11,6 +11,11 @@ class Module {
         $eventManager = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+        $serviceManager = $e->getApplication()->getServiceManager();
+
+        //$eventManager->attach(
+        //    $serviceManager->get('ZfcRbac\View\Strategy\UnauthorizedStrategy')
+        //);
         //$this->bootstrapDb($e);
         //$eventManager->attach('render', array($this, 'setLayoutTitle'));
     }
