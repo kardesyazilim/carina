@@ -11,7 +11,7 @@
  Target Server Version : 50617
  File Encoding         : utf-8
 
- Date: 07/31/2014 12:05:23 PM
+ Date: 07/31/2014 16:59:56 PM
 */
 
 SET NAMES utf8;
@@ -59,15 +59,48 @@ CREATE TABLE `campains_type` (
 -- ----------------------------
 DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
-  `id` int(11) NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `category_name` varchar(100) DEFAULT NULL,
+  `category_group_id` int(11) unsigned DEFAULT NULL,
   `parent_id` int(11) unsigned DEFAULT NULL,
   `core_url_id` int(11) unsigned DEFAULT NULL,
   `status` int(1) DEFAULT '0',
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNQ_categories_core_url_id` (`core_url_id`) USING BTREE,
+  KEY `IDX_categories_category_group_id` (`category_group_id`) USING BTREE,
+  CONSTRAINT `FK_categories_category_group_id_categories_group_id` FOREIGN KEY (`category_group_id`) REFERENCES `categories_group` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `FK_categories_core_url_id_core_url_id` FOREIGN KEY (`core_url_id`) REFERENCES `core_url` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Records of `categories`
+-- ----------------------------
+BEGIN;
+INSERT INTO `categories` VALUES ('1', 'ROOT', null, null, null, '0', '2014-07-31 16:55:02', '2014-07-31 16:55:36');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `categories_group`
+-- ----------------------------
+DROP TABLE IF EXISTS `categories_group`;
+CREATE TABLE `categories_group` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `category_group_name` varchar(100) DEFAULT NULL,
+  `status` int(1) DEFAULT '0',
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNQ_categroies_group_name` (`category_group_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Records of `categories_group`
+-- ----------------------------
+BEGIN;
+INSERT INTO `categories_group` VALUES ('1', 'Ana Menu', '1', '2014-07-31 16:53:15', '2014-07-31 16:53:15'), ('2', 'Footer Menu', '1', '2014-07-31 16:57:46', '2014-07-31 16:57:46');
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `contents`
