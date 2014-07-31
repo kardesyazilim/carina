@@ -66,7 +66,14 @@ class Url implements InputFilterAwareInterface
     {
         return $this->id;
     }
-
+    /**
+    * Get name
+    *
+    * @return string
+    */
+    public function getName(){
+    	return $this->name;
+    }
     /**
     * Set name
     *
@@ -82,7 +89,28 @@ class Url implements InputFilterAwareInterface
 
 
 
-    
+     /**
+     * Get Status
+     * 
+     * @return integer
+     */
+    public function getStatus(){
+    	return $this->status;
+    }
+    /**
+     * Set status
+	 *
+     * @param  integer $status
+     * @return Type 
+     */
+    public function setStatus($status){
+    	$this->status = $status;
+    	return $this;
+    }
+
+
+
+
     /**
      * Now we tell doctrine that before we persist or update we call the updatedTimestamps() function.
      *

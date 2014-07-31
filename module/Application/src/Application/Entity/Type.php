@@ -71,11 +71,14 @@ class Type implements InputFilterAwareInterface
     {
         return $this->id;
     }
-
+    /**
+    * Get name
+    *
+    * @return string
+    */
     public function getName(){
     	return $this->name;
     }
-
     /**
     * Set name
     *
@@ -88,6 +91,47 @@ class Type implements InputFilterAwareInterface
 
         return $this;
     }
+    
+    /**
+    * Get value
+    *
+    * @return string
+    */
+    public function getValue(){
+    	return $this->value;
+    }
+
+    /**
+    * Set value
+    *
+    * @param string $value
+    * @return Type
+    */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+    /**
+     * Get Status
+     * 
+     * @return integer
+     */
+    public function getStatus(){
+    	return $this->status;
+    }
+    /**
+     * Set status
+	 *
+     * @param  integer $status
+     * @return Type 
+     */
+    public function setStatus($status){
+    	$this->status = $status;
+    	return $this;
+    }
+
 
     /**
      * Now we tell doctrine that before we persist or update we call the updatedTimestamps() function.
@@ -95,6 +139,7 @@ class Type implements InputFilterAwareInterface
      * @ORM\PrePersist
      * @ORM\PreUpdate
      */
+    
     public function updatedTimestamps()
     {
         $this->setModifiedAt(new \DateTime(date('Y-m-d H:i:s')));
