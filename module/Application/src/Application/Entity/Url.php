@@ -168,7 +168,7 @@ class Url implements InputFilterAwareInterface
     */
     public function setInputFilter(InputFilterInterface $inputFilter)
     {
-        throw new \Exception("Kullanılamaz");
+        throw new \Exception("Veri tipinde yanlışlık var.");
     }
 
     /**
