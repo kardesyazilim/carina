@@ -11,7 +11,7 @@
  Target Server Version : 50617
  File Encoding         : utf-8
 
- Date: 07/31/2014 17:40:47 PM
+ Date: 07/31/2014 17:58:16 PM
 */
 
 SET NAMES utf8;
@@ -94,13 +94,13 @@ CREATE TABLE `categories_group` (
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNQ_categroies_group_name` (`category_group_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `categories_group`
 -- ----------------------------
 BEGIN;
-INSERT INTO `categories_group` VALUES ('1', 'Ana Menu', '1', '2014-07-31 16:53:15', '2014-07-31 16:53:15'), ('2', 'Footer Menu', '1', '2014-07-31 16:57:46', '2014-07-31 16:57:46');
+INSERT INTO `categories_group` VALUES ('1', 'Bireysel Ana Menu', '1', '2014-07-31 16:53:15', '2014-07-31 17:56:13'), ('2', 'Bireysel Footer Menu', '1', '2014-07-31 16:57:46', '2014-07-31 17:56:18'), ('3', 'Kurumsal Ana Menu', '1', '2014-07-31 17:56:34', '2014-07-31 17:56:34'), ('4', 'Kurumsal Footer Menu', '1', '2014-07-31 17:56:46', '2014-07-31 17:56:46');
 COMMIT;
 
 -- ----------------------------
