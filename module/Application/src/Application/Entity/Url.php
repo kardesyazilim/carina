@@ -56,6 +56,7 @@ class Url implements InputFilterAwareInterface
 
     private $modified_at;//update_time timestamp
     
+    protected $inputFilter;
 
     /**
     * Get Id
@@ -110,6 +111,118 @@ class Url implements InputFilterAwareInterface
 
 
 
+     /**
+    * @ORM\PrePersist
+    */
+    public function setModifiedAt()
+    {
+        $this->modified_at = new \DateTime();
+    }
+
+    /**
+    * Get Created Date
+    *
+    * @return \DateTime
+    */
+    public function getModifiedAt()
+    {
+        return $this->modified_at;
+    }
+     /**
+    * @ORM\PrePersist
+    */
+    public function setCreatedAt()
+    {
+        $this->created_at = new \DateTime();
+    }
+
+    /**
+    * Get Created Date
+    *
+    * @return \DateTime
+    */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+    public function exchangeArray($data)
+    {
+        $this->id = (isset($data['id']))? $data['id'] : null;
+        $this->name = (isset($data['name']))? $data['name'] : null;
+        $this->status = (isset($data['status']))? $data['status'] : null;
+    }
+     /**
+    * Get an array copy of object
+    *
+    * @return array
+    */
+    public function getArrayCopy()
+    {
+        return get_object_vars($this);
+    }
+
+    /**
+    * Set input method
+    *
+    * @param InputFilterInterface $inputFilter
+    */
+    public function setInputFilter(InputFilterInterface $inputFilter)
+    {
+        throw new \Exception("Kullanılamaz");
+    }
+
+    /**
+    * Get input filter
+    *
+    * @return InputFilterInterface
+    */
+    public function getInputFilter()
+    {
+        if (!$this->inputFilter) {
+            $inputFilter = new InputFilter();
+            $factory     = new InputFactory();
+
+            $inputFilter->add($factory->createInput(array(
+                'name'     => 'id',
+                'required' => true,
+                'filters'  => array(
+                    array('name' => 'Int'),
+                ),
+            )));
+
+            $inputFilter->add($factory->createInput(array(
+                'name'     => 'name',
+                'required' => true,
+                'filters'  => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name'    => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min'      => 1,
+                            'max'      => 255,
+                        ),
+                    ),
+                ),
+            )));
+
+            $inputFilter->add($factory->createInput(array(
+                'name'     => 'status',
+                'required' => false,
+                'filters'  => array(
+                    array('name' => 'Int'),
+                ),
+            )));
+
+            $this->inputFilter = $inputFilter;
+        }
+
+        return $this->inputFilter;
+    }
+
 
     /**
      * Now we tell doctrine that before we persist or update we call the updatedTimestamps() function.
@@ -127,6 +240,5 @@ class Url implements InputFilterAwareInterface
         }
     }
 
-    protected $inputFilter;
-
+   
 }
