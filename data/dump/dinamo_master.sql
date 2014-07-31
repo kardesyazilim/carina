@@ -11,7 +11,7 @@
  Target Server Version : 50617
  File Encoding         : utf-8
 
- Date: 07/31/2014 11:32:28 AM
+ Date: 07/31/2014 12:05:23 PM
 */
 
 SET NAMES utf8;
@@ -125,7 +125,8 @@ CREATE TABLE `core_type` (
   `status` int(1) DEFAULT NULL,
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNQ_core_type_core_type_name` (`core_type_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -145,8 +146,16 @@ CREATE TABLE `core_url` (
   `status` int(1) DEFAULT '0',
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNQ_core_url_core_url_key` (`core_url_key`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Records of `core_url`
+-- ----------------------------
+BEGIN;
+INSERT INTO `core_url` VALUES ('1', '', '1', '2014-07-31 11:33:44', '2014-07-31 11:36:30');
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `core_url_reindex`
@@ -154,13 +163,19 @@ CREATE TABLE `core_url` (
 DROP TABLE IF EXISTS `core_url_reindex`;
 CREATE TABLE `core_url_reindex` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `core_url_id` int(11) DEFAULT NULL,
+  `core_url_id` int(11) unsigned DEFAULT NULL,
   `core_url_type_id` int(11) unsigned DEFAULT NULL,
-  `type_id` int(1) DEFAULT '0',
+  `type_id` int(11) unsigned DEFAULT '0',
   `status` int(1) DEFAULT NULL,
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `IDX_core_url_reindex_core_url_id` (`core_url_id`) USING BTREE,
+  KEY `IDX_core_url_reindex_core_url_type_id` (`core_url_type_id`) USING BTREE,
+  KEY `IDX_core_url_reindex_type_id` (`type_id`) USING BTREE,
+  CONSTRAINT `FK_core_url_reindex_core_url_type_id_core_url_type_id` FOREIGN KEY (`core_url_type_id`) REFERENCES `core_url_type` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `FK_core_url_reidex_core_url_id_core_url_id` FOREIGN KEY (`core_url_id`) REFERENCES `core_url` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `FK_core_url_reindex_core_type_id_core_type_id` FOREIGN KEY (`type_id`) REFERENCES `core_type` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -169,10 +184,12 @@ CREATE TABLE `core_url_reindex` (
 DROP TABLE IF EXISTS `core_url_type`;
 CREATE TABLE `core_url_type` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `core_url_type_name` varchar(100) DEFAULT NULL,
   `status` int(1) DEFAULT '0',
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNQ_core_url_type_core_url_type_name` (`core_url_type_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 SET FOREIGN_KEY_CHECKS = 1;
