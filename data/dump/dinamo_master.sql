@@ -11,7 +11,7 @@
  Target Server Version : 50617
  File Encoding         : utf-8
 
- Date: 07/31/2014 17:25:16 PM
+ Date: 07/31/2014 17:40:47 PM
 */
 
 SET NAMES utf8;
@@ -199,6 +199,7 @@ CREATE TABLE `core_url_reindex` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `core_url_id` int(11) unsigned DEFAULT NULL,
   `core_url_type_id` int(11) unsigned DEFAULT NULL,
+  `core_website_id` int(11) unsigned DEFAULT NULL,
   `type_id` int(11) unsigned DEFAULT '0',
   `status` int(1) DEFAULT NULL,
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
@@ -207,9 +208,11 @@ CREATE TABLE `core_url_reindex` (
   KEY `IDX_core_url_reindex_core_url_id` (`core_url_id`) USING BTREE,
   KEY `IDX_core_url_reindex_core_url_type_id` (`core_url_type_id`) USING BTREE,
   KEY `IDX_core_url_reindex_type_id` (`type_id`) USING BTREE,
-  CONSTRAINT `FK_core_url_reindex_core_url_type_id_core_url_type_id` FOREIGN KEY (`core_url_type_id`) REFERENCES `core_url_type` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  KEY `IDX_core_url_reindex_core_url_website_id` (`core_website_id`) USING BTREE,
+  CONSTRAINT `FK_core_url_reindex_core_website_id_core_website_id` FOREIGN KEY (`core_website_id`) REFERENCES `core_website` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `FK_core_url_reidex_core_url_id_core_url_id` FOREIGN KEY (`core_url_id`) REFERENCES `core_url` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `FK_core_url_reindex_core_type_id_core_type_id` FOREIGN KEY (`type_id`) REFERENCES `core_type` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+  CONSTRAINT `FK_core_url_reindex_core_type_id_core_type_id` FOREIGN KEY (`type_id`) REFERENCES `core_type` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `FK_core_url_reindex_core_url_type_id_core_url_type_id` FOREIGN KEY (`core_url_type_id`) REFERENCES `core_url_type` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -232,6 +235,27 @@ CREATE TABLE `core_url_type` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `core_url_type` VALUES ('1', 'single_page', 'Single Page', '1', '2014-07-31 17:18:32', '2014-07-31 17:18:32'), ('2', 'multi_page', 'Multi Page', '1', '2014-07-31 17:18:56', '2014-07-31 17:18:56'), ('3', 'contact_form', 'Contact Form', '1', '2014-07-31 17:19:13', '2014-07-31 17:19:13'), ('4', 'spec_form', 'Spec Form', '1', '2014-07-31 17:19:28', '2014-07-31 17:19:28'), ('5', 'multi_step_form', 'Multi Step Form', '1', '2014-07-31 17:19:43', '2014-07-31 17:19:43');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `core_website`
+-- ----------------------------
+DROP TABLE IF EXISTS `core_website`;
+CREATE TABLE `core_website` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `core_website_name` varchar(100) DEFAULT NULL,
+  `status` int(1) DEFAULT NULL,
+  `cretate_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNQ_core_website_core_website_name` (`core_website_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Records of `core_website`
+-- ----------------------------
+BEGIN;
+INSERT INTO `core_website` VALUES ('1', 'bireysel', '1', '2014-07-31 17:37:37', '2014-07-31 17:37:37'), ('2', 'kurumsal', '1', '2014-07-31 17:37:48', '2014-07-31 17:37:48');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
