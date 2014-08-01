@@ -10,7 +10,7 @@ use Application\Entity\User;
 class IndexController extends AbstractActionController {
 	 protected $_objectManager;
     public function indexAction() {
-          $users = $this->getObjectManager()->getRepository('\Application\Entity\User')->findAll();
+         // $users = $this->getObjectManager()->getRepository('\Application\Entity\User')->findAll();
 
           //var_dump($users);
           //die();
@@ -21,7 +21,7 @@ class IndexController extends AbstractActionController {
         //$this->getServiceLocator()->get('ViewHelperManager')->get('HeadTitle')->set('Dinamo Elektrik');
 
 
-        return new ViewModel(array('users' => $users));
+        //return new ViewModel(array('users' => $users));
         
     }
     protected function getObjectManager()

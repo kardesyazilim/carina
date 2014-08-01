@@ -10,14 +10,14 @@ use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface;
 
 /**
- * Category
+ * Website
  *
- * @ORM\Table(name="categories")
+ * @ORM\Table(name="core_website")
  * @ORM\Entity
  */
-class Category implements InputFilterAwareInterface
+class Website implements InputFilterAwareInterface
 {
-    /**
+	/**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -25,40 +25,41 @@ class Category implements InputFilterAwareInterface
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
     /**
      * @var string
      *
-     * @ORM\Column(name="category_name", type="string", length=100, nullable=false)
+     * @ORM\Column(name="core_website_name", type="string", length=100, nullable=false)
      */
     private $name;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="parent_id", type="integer")
-     */
-    private $parentId;
-
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Url")
-     * @ORM\JoinColumn(name="core_url_id", referencedColumnName="id")
-     */
-    private $urlId;
-
-    /**
+     /**
      * @var integer
      *
      * @ORM\Column(name="status", type="integer")
      */
     
-    private $status;
+   
 
-
-    protected $inputFilter;
+     private $status;//status integer 1 
 
     /**
+     * @var datetime
+     *
+     * @ORM\Column(name="create_time", type="datetime")
+     */
+    private $created_at;//create_time timestamp
+    
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(name="update_time", type="datetime")
+     */
+
+    private $modified_at;//update_time timestamp
+    
+    protected $inputFilter;
+
+
+     /**
     * Get Id
     *
     * @param integer
@@ -67,12 +68,19 @@ class Category implements InputFilterAwareInterface
     {
         return $this->id;
     }
-
+    /**
+    * Get name
+    *
+    * @return string
+    */
+    public function getName(){
+    	return $this->name;
+    }
     /**
     * Set name
     *
     * @param string $name
-    * @return Category
+    * @return Url
     */
     public function setName($name)
     {
@@ -81,41 +89,75 @@ class Category implements InputFilterAwareInterface
         return $this;
     }
     /**
-    * Set url
-    *
-    * @param integer $urlId
-    * @return Category
-    */
-    
-
-    public function setUrl($urlId){
-        $this->urlId = $urlId;
-        return $this;
-
-    }
-
-    /**
     * Get name
     *
     * @return string
     */
-    public function getName()
+   
+     /**
+     * Get Status
+     * 
+     * @return integer
+     */
+    public function getStatus(){
+    	return $this->status;
+    }
+    /**
+     * Set status
+	 *
+     * @param  integer $status
+     * @return Type 
+     */
+    public function setStatus($status){
+    	$this->status = $status;
+    	return $this;
+    }
+
+
+
+     /**
+    * @ORM\PrePersist
+    */
+    public function setModifiedAt()
     {
-        return $this->name;
+        $this->modified_at = new \DateTime();
     }
 
     /**
-    * Exchange array - used in ZF2 form
+    * Get Created Date
     *
-    * @param array $data An array of data
+    * @return \DateTime
     */
+    public function getModifiedAt()
+    {
+        return $this->modified_at;
+    }
+    
+    /**
+    * @ORM\PrePersist
+    */
+    public function setCreatedAt()
+    {
+        $this->created_at = new \DateTime();
+    }
+
+    /**
+    * Get Created Date
+    *
+    * @return \DateTime
+    */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
     public function exchangeArray($data)
     {
         $this->id = (isset($data['id']))? $data['id'] : null;
         $this->name = (isset($data['name']))? $data['name'] : null;
+        $this->value = (isset($data['value']))? $data['value'] : null;
+        $this->status = (isset($data['status']))? $data['status'] : null;
     }
-
-    /**
+     /**
     * Get an array copy of object
     *
     * @return array
@@ -132,7 +174,7 @@ class Category implements InputFilterAwareInterface
     */
     public function setInputFilter(InputFilterInterface $inputFilter)
     {
-        throw new \Exception("Not used");
+        throw new \Exception("Veri tipinde yanlışlık var.");
     }
 
     /**
@@ -167,9 +209,17 @@ class Category implements InputFilterAwareInterface
                         'options' => array(
                             'encoding' => 'UTF-8',
                             'min'      => 1,
-                            'max'      => 255,
+                            'max'      => 100,
                         ),
                     ),
+                ),
+            )));
+
+            $inputFilter->add($factory->createInput(array(
+                'name'     => 'status',
+                'required' => false,
+                'filters'  => array(
+                    array('name' => 'Int'),
                 ),
             )));
 
@@ -178,4 +228,23 @@ class Category implements InputFilterAwareInterface
 
         return $this->inputFilter;
     }
+
+
+    /**
+     * Now we tell doctrine that before we persist or update we call the updatedTimestamps() function.
+     *
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     */
+    public function updatedTimestamps()
+    {
+        $this->setModifiedAt(new \DateTime(date('Y-m-d H:i:s')));
+
+        if($this->getCreatedAt() == null)
+        {
+            $this->setCreatedAt(new \DateTime(date('Y-m-d H:i:s')));
+        }
+    }
+
+   
 }
