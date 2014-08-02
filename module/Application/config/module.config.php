@@ -15,16 +15,16 @@ return array(
                 ),
             ),
             'application' => array(
-                'type' => 'Literal',
+                'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
-                    'route' => '/bireysel',
+                    'route' => '/cms',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller' => 'Index',
                         'action' => 'index',
                     ),
                 ),
-                'may_terminate' => true,
+                'may_terminate' => false,
                 'child_routes' => array(
                     'default' => array(
                         'type' => 'Segment',
@@ -32,7 +32,7 @@ return array(
                             'route' => '[/:url]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'url' => '[a-zA-Z][a-zA-Z0-9_-]*',
                             ),
                             'defaults' => array(
                                 '__NAMESPACE__' => 'Application\Controller',
@@ -43,6 +43,7 @@ return array(
                     ),
                 ),
             ),
+
         ),
     ),
     'service_manager' => array(
@@ -79,7 +80,8 @@ return array(
             'layout/layout' => __DIR__ . '/../view/application/layout/layout.phtml',
             'error/404' => __DIR__ . '/../view/error/404.phtml',
             'error/index' => __DIR__ . '/../view/error/index.phtml',
-            'index/quick' => '/../view/application/index/quick.phtml',
+            'index/header' => __DIR__ .'/../view/application/index/header.phtml',
+            'index/quick' => __DIR__ .'/../view/application/index/quick.phtml',
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',

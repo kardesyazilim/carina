@@ -12,6 +12,16 @@ class IndexController extends AbstractActionController {
     public function indexAction() {
         $websites = $this->getObjectManager()->getRepository('\Application\Entity\Website')->findBy(array('status'=>'1'));
 
+
+
+
+
+        $url = $this->getEvent()->getRouteMatch()->getParam('url'); 
+
+        //bireysel kurumsal ayracı
+        //session
+        
+
         //return new ViewModel(array('websites' => $websites));
 
 
@@ -21,16 +31,18 @@ class IndexController extends AbstractActionController {
 
         //return new ViewModel(array('users' => $users));
 
-         $view = new ViewModel();
+        $view = new ViewModel();
 
         // this is not needed since it matches "module/controller/action"
-        $view->setTemplate('application/index/quick');
+        $view->setTemplate('application/index/index');
+      
+
+        $headerView = new ViewModel(array('headers'=>$websites));
+        $headerView->setTemplate('index/header');
+
 
         $quickView = new ViewModel(array('quick' => 'quick'));
         $quickView->setTemplate('index/quick');
-
-        //$primarySidebarView = new ViewModel();
-        //$primarySidebarView->setTemplate('content/main-sidebar');
 
         //$secondarySidebarView = new ViewModel();
         //$secondarySidebarView->setTemplate('content/secondary-sidebar');
@@ -40,8 +52,8 @@ class IndexController extends AbstractActionController {
 
         //$secondarySidebarView->addChild($sidebarBlockView, 'block');
 
-        //$view->addChild($quickView, 'quick');
-             //->addChild($primarySidebarView, 'sidebar_primary')
+        $view->addChild($headerView, 'header')
+             ->addChild($quickView, 'quick');
              //->addChild($secondarySidebarView, 'sidebar_secondary');
 
         return $view;
@@ -50,9 +62,7 @@ class IndexController extends AbstractActionController {
         
 
     }
-    protected function quickAction(){
-
-    }
+  
     protected function getObjectManager()
     {
         if (!$this->_objectManager) {
