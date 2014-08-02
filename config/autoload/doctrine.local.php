@@ -64,15 +64,9 @@ return array(
 
     /*'view_manager' => array(
         'template_map' => array(
-            'zend-developer-tools/toolbar/doctrine-orm' => __DIR__ . '/../view/zend-developer-tools/toolbar/doctrine-orm.phtml',
+            'zend-developer-tools/toolbar/doctrine-orm' => __DIR__.'/../../module/Application/view/zend-developer-tools/toolbar/doctrine-orm.phtml',
         ),
     ),*/
-    'view_manager' => array(
-            'template_map' => array(
-                'zend-developer-tools/toolbar/doctrine-odm'
-                => '/view/zend-developer-tools/toolbar/doctrine-odm.phtml',
-        ),
-    ),
 
     'zenddevelopertools' => array(
         'profiler' => array(
