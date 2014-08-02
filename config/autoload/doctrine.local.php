@@ -10,7 +10,7 @@ return array(
                 'eventmanager'  => 'orm_default',
 
                 'params' => array(
-                    'host'     => 'localhost',
+                    'host'     => '127.0.0.1',
                     'port'     => '3306',
                     'user'     => 'root',
                     'password' => 'qweytr',
@@ -62,9 +62,15 @@ return array(
 
     // zendframework/zend-developer-tools specific settings
 
-    'view_manager' => array(
+    /*'view_manager' => array(
         'template_map' => array(
             'zend-developer-tools/toolbar/doctrine-orm' => __DIR__ . '/../view/zend-developer-tools/toolbar/doctrine-orm.phtml',
+        ),
+    ),*/
+    'view_manager' => array(
+            'template_map' => array(
+                'zend-developer-tools/toolbar/doctrine-odm'
+                => '/view/zend-developer-tools/toolbar/doctrine-odm.phtml',
         ),
     ),
 

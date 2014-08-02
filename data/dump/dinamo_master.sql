@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `campains`;
 CREATE TABLE `campains` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `status` int(1) DEFAULT NULL,
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` timestamp NULL DEFAULT 0,
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -37,7 +37,7 @@ CREATE TABLE `campains_desc` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `contents_desc_id` int(11) unsigned DEFAULT NULL,
   `status` int(1) DEFAULT '0',
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` timestamp NULL DEFAULT 0,
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -49,7 +49,7 @@ DROP TABLE IF EXISTS `campains_type`;
 CREATE TABLE `campains_type` (
   `id` int(11) NOT NULL,
   `status` int(1) DEFAULT '0',
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` timestamp NULL DEFAULT 0,
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -66,7 +66,7 @@ CREATE TABLE `categories` (
   `parent_id` int(11) unsigned DEFAULT NULL,
   `core_url_id` int(11) unsigned DEFAULT NULL,
   `status` int(1) DEFAULT '0',
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` timestamp NULL DEFAULT 0,
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNQ_categories_core_url_id` (`core_url_id`) USING BTREE,
@@ -90,7 +90,7 @@ CREATE TABLE `categories_group` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `category_group_name` varchar(100) DEFAULT NULL,
   `status` int(1) DEFAULT '0',
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` timestamp NULL DEFAULT 0,
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNQ_categroies_group_name` (`category_group_name`)
@@ -112,7 +112,7 @@ CREATE TABLE `contents` (
   `content_name` varchar(100) DEFAULT NULL,
   `content_body` text,
   `status` int(1) DEFAULT NULL,
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` timestamp NULL DEFAULT 0,
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -130,7 +130,7 @@ CREATE TABLE `contents_desc` (
   `content_type` varchar(255) DEFAULT NULL,
   `content_image` varchar(255) DEFAULT NULL,
   `content_url` varchar(255) DEFAULT NULL,
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` timestamp NULL DEFAULT 0,
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -143,7 +143,7 @@ CREATE TABLE `contents_type` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `content_type_name` varchar(100) DEFAULT NULL,
   `status` int(1) DEFAULT '0',
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` timestamp NULL DEFAULT 0,
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -157,7 +157,7 @@ CREATE TABLE `core_type` (
   `core_type_name` varchar(100) DEFAULT NULL,
   `core_type_value` varchar(100) DEFAULT NULL,
   `status` int(1) DEFAULT NULL,
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` timestamp NULL DEFAULT 0,
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNQ_core_type_core_type_name` (`core_type_name`)
@@ -178,7 +178,7 @@ CREATE TABLE `core_url` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `core_url_key` varchar(100) DEFAULT NULL,
   `status` int(1) DEFAULT '0',
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` timestamp NULL DEFAULT 0,
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNQ_core_url_core_url_key` (`core_url_key`) USING BTREE
@@ -202,7 +202,7 @@ CREATE TABLE `core_url_reindex` (
   `core_website_id` int(11) unsigned DEFAULT NULL,
   `type_id` int(11) unsigned DEFAULT '0',
   `status` int(1) DEFAULT NULL,
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` timestamp NULL DEFAULT 0,
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `IDX_core_url_reindex_core_url_id` (`core_url_id`) USING BTREE,
@@ -224,7 +224,7 @@ CREATE TABLE `core_url_type` (
   `core_url_type_key` varchar(100) DEFAULT NULL,
   `core_url_type_value` varchar(100) DEFAULT NULL,
   `status` int(1) DEFAULT '0',
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` timestamp NULL DEFAULT 0,
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNQ_core_url_type_core_url_type_name` (`core_url_type_key`)
@@ -245,7 +245,7 @@ CREATE TABLE `core_website` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `core_website_name` varchar(100) DEFAULT NULL,
   `status` int(1) DEFAULT NULL,
-  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` timestamp NULL DEFAULT 0,
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNQ_core_website_core_website_name` (`core_website_name`)

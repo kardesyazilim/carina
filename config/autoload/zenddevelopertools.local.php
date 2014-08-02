@@ -111,7 +111,7 @@ return array(
              * Expects: bool
              * Default: false
              */
-            'auto_hide' => false,
+            'auto_hide' => true,
 
             /**
              * The Toolbar position.
@@ -119,7 +119,7 @@ return array(
              * Expects: string ('bottom' or 'top')
              * Default: bottom
              */
-            'position' => 'bottom',
+            'position' => 'top',
 
             /**
              * If enabled, the Toolbar will check if your current Zend Framework version is up-to-date.
@@ -128,7 +128,7 @@ return array(
              * Expects: bool
              * Default: false
              */
-            'version_check' => false,
+            'version_check' => true,
 
             /**
              * Contains a list with all collector toolbar templates. The name  of the array key must be same as the name
@@ -147,6 +147,11 @@ return array(
              * ),
              * Expects: array
              */
+
+            
+
+
+            
             'entries' => array()
         )
     )
