@@ -119,7 +119,7 @@ return array(
              * Expects: string ('bottom' or 'top')
              * Default: bottom
              */
-            'position' => 'top',
+            'position' => 'bottom',
 
             /**
              * If enabled, the Toolbar will check if your current Zend Framework version is up-to-date.
