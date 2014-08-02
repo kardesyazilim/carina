@@ -19,8 +19,17 @@ class IndexController extends AbstractActionController {
         $url = $this->getEvent()->getRouteMatch()->getParam('url'); 
 
         //bireysel kurumsal ayracı
-        //session
+        //session kontrol
+
+        //url göre içerik
+        //yan menu varsa 
         
+        //api get
+        
+        //post form
+
+
+        //footer
 
         //return new ViewModel(array('websites' => $websites));
 
