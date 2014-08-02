@@ -11,7 +11,7 @@
  Target Server Version : 50617
  File Encoding         : utf-8
 
- Date: 07/31/2014 17:58:16 PM
+ Date: 08/02/2014 14:14:09 PM
 */
 
 SET NAMES utf8;
@@ -73,7 +73,7 @@ CREATE TABLE `categories` (
   KEY `IDX_categories_category_group_id` (`category_group_id`) USING BTREE,
   CONSTRAINT `FK_categories_category_group_id_categories_group_id` FOREIGN KEY (`category_group_id`) REFERENCES `categories_group` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `FK_categories_core_url_id_core_url_id` FOREIGN KEY (`core_url_id`) REFERENCES `core_url` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `categories`
@@ -209,10 +209,10 @@ CREATE TABLE `core_url_reindex` (
   KEY `IDX_core_url_reindex_core_url_type_id` (`core_url_type_id`) USING BTREE,
   KEY `IDX_core_url_reindex_type_id` (`type_id`) USING BTREE,
   KEY `IDX_core_url_reindex_core_url_website_id` (`core_website_id`) USING BTREE,
-  CONSTRAINT `FK_core_url_reindex_core_website_id_core_website_id` FOREIGN KEY (`core_website_id`) REFERENCES `core_website` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `FK_core_url_reidex_core_url_id_core_url_id` FOREIGN KEY (`core_url_id`) REFERENCES `core_url` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `FK_core_url_reindex_core_type_id_core_type_id` FOREIGN KEY (`type_id`) REFERENCES `core_type` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `FK_core_url_reindex_core_url_type_id_core_url_type_id` FOREIGN KEY (`core_url_type_id`) REFERENCES `core_url_type` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+  CONSTRAINT `FK_core_url_reindex_core_url_type_id_core_url_type_id` FOREIGN KEY (`core_url_type_id`) REFERENCES `core_url_type` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `FK_core_url_reindex_core_website_id_core_website_id` FOREIGN KEY (`core_website_id`) REFERENCES `core_website` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -245,7 +245,7 @@ CREATE TABLE `core_website` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `core_website_name` varchar(100) DEFAULT NULL,
   `status` int(1) DEFAULT NULL,
-  `cretate_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNQ_core_website_core_website_name` (`core_website_name`)
