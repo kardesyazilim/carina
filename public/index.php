@@ -3,7 +3,8 @@
 /**
  * Display all errors when APPLICATION_ENV is development.
  */
-
+date_default_timezone_set('Europe/Istanbul');       // timezone for a German in Germany
+                
 define('REQUEST_MICROTIME', microtime(true));
 
 if ($_SERVER['APPLICATION_ENV'] == 'development') {

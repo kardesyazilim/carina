@@ -1,31 +1,75 @@
-<div class="container">
-    <div class="cycle-slideshow">
-        <button class="prev" data-cycle-cmd="prev">Prev</button>
-        <div class="cycle-overlay"></div>
-        <img src="<?php echo $this->serverUrl('/media/cms/slider1.jpg');?>" data-cycle-title="Yaşam tarzınıza uygun elektrik!"
-        data-cycle-desc="Dinamo, ihtiyaçlarınıza uygun elektriği hiçbir altyapı değişikliği gerekmeden size sunuyor. ">
-        <img src="http://lorempixel.com/940/500/technics/1/" data-cycle-title="Redwoods"
-        data-cycle-desc="Muir Woods National Monument">
-        <img src="http://lorempixel.com/940/500/technics/2/" data-cycle-title="Angel Island"
-        data-cycle-desc="San Franscisco Bay">
-        <img src="http://lorempixel.com/940/500/technics/3/" data-cycle-title="Raquette Lake"
-        data-cycle-desc="Adirondack State Park">
-        <div class="cycle-pager"></div>
-        <button class="next" data-cycle-cmd="next">Next</button>
-    </div>
-    <hr>
-</div>
-<div>
-  <?php if (isset($users)) : ?>
-          
-                <?php foreach($users as $deneme): ?>
-                   
-                    
-                        <?php echo $deneme->getId(); ?>
-                        <?php echo $deneme->getFullName(); ?>
-                       
-                   
-                <?php endforeach; ?>
-               
-                <?php endif; ?>
-</div>
+   <section class="container clearfix not-white">
+                <div class="col-3-2 mr10 left">
+                    <img src="<?php echo $this->serverUrl('/skins/frontend/dinamoelektrik/img/elektrik-hesapla.jpg');?>" alt="">
+                    <div class="text">
+                        <h3><b>Ekonomik <br> Elektrik</b> Hesaplama!</h3>
+                        <p>Mevcut tüketim bilgilerinizi girin, size
+                        en uygun olanı seçin ve ne kadar kazanacağınızı görün!</p>
+                        <br>
+
+                        <input type="text" placeholder="00.0">
+                        <br clear="all">
+
+                        <select class="select">
+                           <option>Tarifeni Seç</option>
+                           <option value="1">Gece Kuşu</option>
+                           <option value="2">Gündüz Günü</option>
+                           <option value="3">Aylık</option>
+                           <option value="4">Peşin Çalışan</option>
+                        </select>
+                        <br clear="all">
+                        <br clear="all">
+
+
+                        <a href="#" class="btn-green">HESAPLA</a>
+
+                    </div>
+                </div>
+                <div class="col-3-1 ml10 right">
+                    <img src="<?php echo $this->serverUrl('/skins/frontend/dinamoelektrik/img/nasil-katilirim.jpg');?>" alt="">
+                    <div class="text">
+                        <h3><b>Nasıl</b> Katılırım?</h3>
+                        <p>Serbest tüketici olmanız ve başka
+                        bir tedarikçi ile sözleşmenizin
+                        olmaması yeterli.</p>
+                        <br clear="all">
+                        <br clear="all">
+                        <a href="#" class="btn-green left">HEMEN BAŞVUR</a>
+                    </div>
+                </div>
+                <br clear="all">
+                <hr>
+                <div class="happy-client clearfix">
+                    <div class="col-4-2">
+                        <h3>TWITTER</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus repellendus ab ipsum vero quisquam est, praesentium nam neque eaque veniam assumenda rem.</p>
+                        <div class="profile">
+                            <img src="http://lorempixel.com/gray/45/45/people/1/" alt="">
+                            <span class="name">Tarkan</span>
+                            <span class="nick">@MegaStar</span>
+                        </div>
+                    </div>
+                    <div class="col-4-1 green-bg">
+                        <h3>TWITTER</h3>
+                         <p>Repellendus consectetur nihil, nemo deserunt molestiae ab ducimus.</p>
+                         <div class="profile">
+                            <img src="http://lorempixel.com/gray/45/45/people/2/" alt="">
+                            <span class="name">Sinan Afra</span>
+                            <span class="nick">@CEO_markafoni</span>
+                        </div>
+                    </div>
+                    <div class="col-4-1">
+                        <h3>TWITTER</h3>
+                        <p>"Sint libero voluptate reprehenderit a, quasi aperiam", doloribus esse error suscipit.</p>
+                        <div class="profile">
+                            <img src="http://lorempixel.com/gray/45/45/people/3/" alt="">
+                            <span class="name">Geyik Kafe </span>
+                            <span class="nick">@kafeGeyik</span>
+                        </div>
+
+                    </div>
+                </div>
+                <br clear="all">
+                <br clear="all">
+
+            </section>

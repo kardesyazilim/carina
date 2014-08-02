@@ -46,7 +46,7 @@ class Website implements InputFilterAwareInterface
      *
      * @ORM\Column(name="create_time", type="datetime")
      */
-    private $created_at;//create_time timestamp
+    private $created_at;
     
     /**
      * @var datetime
@@ -54,7 +54,7 @@ class Website implements InputFilterAwareInterface
      * @ORM\Column(name="update_time", type="datetime")
      */
 
-    private $modified_at;//update_time timestamp
+    private $modified_at;
     
     protected $inputFilter;
 
@@ -154,7 +154,7 @@ class Website implements InputFilterAwareInterface
     {
         $this->id = (isset($data['id']))? $data['id'] : null;
         $this->name = (isset($data['name']))? $data['name'] : null;
-        $this->value = (isset($data['value']))? $data['value'] : null;
+        //$this->value = (isset($data['value']))? $data['value'] : null;
         $this->status = (isset($data['status']))? $data['status'] : null;
     }
      /**

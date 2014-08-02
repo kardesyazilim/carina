@@ -10,11 +10,9 @@ use Application\Entity\User;
 class IndexController extends AbstractActionController {
 	 protected $_objectManager;
     public function indexAction() {
-         // $users = $this->getObjectManager()->getRepository('\Application\Entity\User')->findAll();
+        $websites = $this->getObjectManager()->getRepository('\Application\Entity\Website')->findBy(array('status'=>'1'));
 
-          //var_dump($users);
-          //die();
-        //return new ViewModel(array('users' => $users));
+         return new ViewModel(array('websites' => $websites));
 
 
 
