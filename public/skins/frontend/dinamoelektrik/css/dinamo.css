@@ -595,7 +595,7 @@ header .top-menu {
 
 }
 .customer-type li:last-child a {
-	padding-right:0;
+	padding-right:20px;
 	padding-left: 20px;
 }
 .customer-type li.active a {
