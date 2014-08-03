@@ -82,6 +82,9 @@ return array(
             'error/index' => __DIR__ . '/../view/error/index.phtml',
             'index/header' => __DIR__ .'/../view/application/index/header.phtml',
             'index/quick' => __DIR__ .'/../view/application/index/quick.phtml',
+            'index/navigation' => __DIR__.'/../view/application/index/navigation.phtml',
+            'index/center' => __DIR__.'/../view/application/index/center.phtml',
+            'index/footer' => __DIR__.'/../view/application/index/footer.phtml'
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',

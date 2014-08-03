@@ -8,9 +8,9 @@ use Application\Entity\User;
 
 
 class IndexController extends AbstractActionController {
-	 protected $_objectManager;
+	protected $_objectManager;
     public function indexAction() {
-        $websites = $this->getObjectManager()->getRepository('\Application\Entity\Website')->findBy(array('status'=>'1'));
+        
 
 
 
@@ -25,7 +25,7 @@ class IndexController extends AbstractActionController {
         //yan menu varsa 
         
         //api get
-        
+
         //post form
 
 
@@ -38,32 +38,35 @@ class IndexController extends AbstractActionController {
         //$this->getServiceLocator()->get('ViewHelperManager')->get('HeadTitle')->set('Dinamo Elektrik');
 
 
-        //return new ViewModel(array('users' => $users));
+   
 
         $view = new ViewModel();
 
-        // this is not needed since it matches "module/controller/action"
-        $view->setTemplate('application/index/index');
+  
+        $view->setTemplate( 'application/index/index' );
       
-
-        $headerView = new ViewModel(array('headers'=>$websites));
+        //header area add config add spec css
+        $headerView = new ViewModel(array( 'headers' => $this->getWebsite() ) );
         $headerView->setTemplate('index/header');
 
-
-        $quickView = new ViewModel(array('quick' => 'quick'));
+        //quick nav
+        $quickView = new ViewModel(array('quicks' => 'quick'));
         $quickView->setTemplate('index/quick');
-
-        //$secondarySidebarView = new ViewModel();
-        //$secondarySidebarView->setTemplate('content/secondary-sidebar');
-
-        //$sidebarBlockView = new ViewModel();
-        //$sidebarBlockView->setTemplate('content/block');
-
-        //$secondarySidebarView->addChild($sidebarBlockView, 'block');
+        //main nav
+        $navView = new ViewModel(array('navs'=>'navs'));
+        $navView->setTemplate('index/navigation');
+        //center area 
+        $centerView = new ViewModel(array('center' => 'center', ));
+        $centerView->setTemplate('index/center');
+        //footer area
+        $footerView = new ViewModel(array('footer'=>'footer'));
+        $footerView->setTemplate('index/footer');
 
         $view->addChild($headerView, 'header')
-             ->addChild($quickView, 'quick');
-             //->addChild($secondarySidebarView, 'sidebar_secondary');
+             ->addChild($quickView, 'quick')
+             ->addChild($navView, 'navigation')
+             ->addChild($centerView, 'center')
+             ->addChild($footerView, 'footer');
 
         return $view;
 
@@ -71,7 +74,13 @@ class IndexController extends AbstractActionController {
         
 
     }
-  
+    protected function getWebsite(){
+        return $websites = $this->getObjectManager()->getRepository('\Application\Entity\Website')->findBy(array('status'=>'1'));
+    }
+    protected function getNav(){
+        //add param
+        $navs = $this->getObjectManager()->getRepository('\Application\Entity\Category')->findBy(array('status'=>'1'));
+    }
     protected function getObjectManager()
     {
         if (!$this->_objectManager) {
