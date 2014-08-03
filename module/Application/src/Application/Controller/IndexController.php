@@ -7,19 +7,38 @@ use Zend\View\Model\ViewModel;
 use Application\Entity\User;
 use Zend\Http\Request;
 
+use Zend\Session\Storage\ArrayStorage;
+use Zend\Session\SessionManager;
+use Zend\Http\Cookies;
+use Zend\Session\Container;
+
 
 class IndexController extends AbstractActionController {
 	protected $_objectManager;
     public function indexAction() {
-        
 
-        $request = new Request();
+        //session and cookie blok
+
+        $session = new Container('base');
+
+
+        //session and cookie blok
+
+
+     
        // echo 
 
 
 
         $url = $this->getEvent()->getRouteMatch()->getParam('url'); 
+        $returnUrl = $this->getRequest()->getServer('HTTP_REFERER');
+        if(empty($url) || $url == 'kurumsal' || $url == 'bireysel' ){
+            $session->offsetSet('url', $url);
+            //$activeUrl = $url;
+        }
 
+        $session->offsetSet('returnUrl', $returnUrl);
+        $activeUrl = $session->offsetGet('url');
         //bireysel kurumsal ayracı
         //session kontrol
 
@@ -39,8 +58,15 @@ class IndexController extends AbstractActionController {
 
         //$this->getServiceLocator()->get('ViewHelperManager')->get('HeadTitle')->set('Dinamo Elektrik');
 
+        //var_dump($this->getRequest()->getServer('HTTP_REFERER'));
+        //die();
 
-   
+  
+
+
+       
+
+
 
         $view = new ViewModel();
 
@@ -48,11 +74,11 @@ class IndexController extends AbstractActionController {
         $view->setTemplate( 'application/index/index' );
       
         //header area add config add spec css
-        $headerView = new ViewModel(array( 'headers' => $this->getWebsite() ) );
+        $headerView = new ViewModel(array( 'headers' => $this->getWebsite(), 'activeUrl' => $activeUrl ) );
         $headerView->setTemplate('index/header');
 
         //quick nav
-        $quickView = new ViewModel(array('quicks' => $request->getUriString() ) );
+        $quickView = new ViewModel(array('quicks' => 'dasf' ) );
         $quickView->setTemplate('index/quick');
         //main nav
         $navView = new ViewModel(array('navs'=>'navs'));
