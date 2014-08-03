@@ -31,6 +31,19 @@ class Website implements InputFilterAwareInterface
      * @ORM\Column(name="core_website_name", type="string", length=100, nullable=false)
      */
     private $name;
+     
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="core_website_value", type="string", length=100, nullable=false)
+     */
+    private $value;
+
+
+
+
      /**
      * @var integer
      *
@@ -88,14 +101,11 @@ class Website implements InputFilterAwareInterface
 
         return $this;
     }
-    /**
-    * Get name
-    *
-    * @return string
-    */
-   
+
+    
+
      /**
-     * Get Status
+     * Get status
      * 
      * @return integer
      */

@@ -15,6 +15,8 @@ use Zend\Session\Container;
 
 class IndexController extends AbstractActionController {
 	protected $_objectManager;
+    protected $_websiteName;
+    protected $_websiteId;
     public function indexAction() {
 
         //session and cookie blok
@@ -28,18 +30,24 @@ class IndexController extends AbstractActionController {
      
        // echo 
 
-
-
+           
         $url = $this->getEvent()->getRouteMatch()->getParam('url'); 
         $returnUrl = $this->getRequest()->getServer('HTTP_REFERER');
-        if(empty($url) || $url == 'kurumsal' || $url == 'bireysel' ){
-            $session->offsetSet('url', $url);
+        if($url == 'kurumsal' || $url == 'bireysel' ){
+            if(empty($url)){
+                $session->offsetSet('url', 'bireysel');
+                
+            }
+            else{
+                $session->offsetSet('url', $url);
+            
+            }
             //$activeUrl = $url;
         }
-
         $session->offsetSet('returnUrl', $returnUrl);
-        $activeUrl = $session->offsetGet('url');
-        //bireysel kurumsal ayracı
+        $this->_websiteName = $session->offsetGet('url');
+        //$this->_websiteId = $this->getWebsiteId();  
+     
         //session kontrol
 
         //url göre içerik
@@ -74,14 +82,14 @@ class IndexController extends AbstractActionController {
         $view->setTemplate( 'application/index/index' );
       
         //header area add config add spec css
-        $headerView = new ViewModel(array( 'headers' => $this->getWebsite(), 'activeUrl' => $activeUrl ) );
+        $headerView = new ViewModel(array( 'headers' => $this->getWebsite(), 'activeUrl' => $this->_websiteName ) );
         $headerView->setTemplate('index/header');
 
         //quick nav
-        $quickView = new ViewModel(array('quicks' => 'dasf' ) );
+        $quickView = new ViewModel(array('quicks' => 'dasf' ,'website' => $this->getWebsiteId()[0]->getId()) );
         $quickView->setTemplate('index/quick');
         //main nav
-        $navView = new ViewModel(array('navs'=>'navs'));
+        $navView = new ViewModel(array('navs'=>'navs','website' => $this->getWebsiteId()[0]->getId() ));
         $navView->setTemplate('index/navigation');
         //center area 
         $centerView = new ViewModel( array( 'center' => 'center' ) );
@@ -103,11 +111,14 @@ class IndexController extends AbstractActionController {
 
     }
     protected function getWebsite(){
-        return $websites = $this->getObjectManager()->getRepository('\Application\Entity\Website')->findBy(array('status'=>'1'));
+        return $this->getObjectManager()->getRepository('\Application\Entity\Website')->findBy(array('status'=>'1'));
     }
     protected function getNav(){
         //add param
         $navs = $this->getObjectManager()->getRepository('\Application\Entity\Category')->findBy(array('status'=>'1'));
+    }
+    protected function getWebsiteId(){
+       return $this->getObjectManager()->getRepository('\Application\Entity\Website')->findBy(array('status'=>'1','name'=>$this->_websiteName));
     }
     protected function getObjectManager()
     {

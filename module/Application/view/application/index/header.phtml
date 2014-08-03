@@ -11,15 +11,21 @@
 
                         foreach ($headers as $header) {
 
-                            if( $this->url()=='/' && $this->url() == 'bireysel' || $header->getName() =='bireysel' ){
-                                echo '<li ><a href="'.$this->serverUrl("/cms/".$header->getName()).'">'.$header->getName().'</a></li>';   
+                            /**if( $this->url()=='/' && $this->url() == 'bireysel' || $header->getName() =='bireysel' ){
+                                echo '<li  class="active" ><a href="'.$this->serverUrl("/cms/".$header->getName()).'">'.$header->getName().'</a></li>';   
                             }
                             
                             else {
-                                echo '<li class="active"><a href="'.$this->serverUrl("/cms/".$header->getName()).'">'.$header->getName().'</a></li>';
+                                echo '<li><a href="'.$this->serverUrl("/cms/".$header->getName()).'">'.$header->getName().'</a></li>';
+                            }**/
+                            if($header->getName() == $activeUrl ){
+                                    echo '<li  class="active" ><a href="'.$this->serverUrl("/cms/".$header->getName()).'">'.$header->getName().'</a></li>'; 
+                            }
+                            else{
+                                echo '<li><a href="'.$this->serverUrl("/cms/".$header->getName()).'">'.$header->getName().'</a></li>';
                             }
                         }
                         ?>
                             
                         </ul>
-                        <?php echo $activeUrl;?>
+                      
