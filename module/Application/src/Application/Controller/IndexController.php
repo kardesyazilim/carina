@@ -5,6 +5,7 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Application\Entity\User;
+use Zend\Http\Request;
 
 
 class IndexController extends AbstractActionController {
@@ -12,7 +13,8 @@ class IndexController extends AbstractActionController {
     public function indexAction() {
         
 
-
+        $request = new Request();
+       // echo 
 
 
 
@@ -50,13 +52,13 @@ class IndexController extends AbstractActionController {
         $headerView->setTemplate('index/header');
 
         //quick nav
-        $quickView = new ViewModel(array('quicks' => 'quick'));
+        $quickView = new ViewModel(array('quicks' => $request->getUriString() ) );
         $quickView->setTemplate('index/quick');
         //main nav
         $navView = new ViewModel(array('navs'=>'navs'));
         $navView->setTemplate('index/navigation');
         //center area 
-        $centerView = new ViewModel(array('center' => 'center', ));
+        $centerView = new ViewModel( array( 'center' => 'center' ) );
         $centerView->setTemplate('index/center');
         //footer area
         $footerView = new ViewModel(array('footer'=>'footer'));
