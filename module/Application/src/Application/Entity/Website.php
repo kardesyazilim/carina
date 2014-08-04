@@ -32,16 +32,14 @@ class Website implements InputFilterAwareInterface
      */
     private $name;
      
-
-
     /**
-     * @var string
-     *
-     * @ORM\Column(name="core_website_value", type="string", length=100, nullable=false)
-     */
+    * @var string 
+    *
+    * @ORM\Column(name="core_website_value", type="string", length=100, nullable=false)
+    */
     private $value;
 
-
+    
 
 
      /**
@@ -102,7 +100,27 @@ class Website implements InputFilterAwareInterface
         return $this;
     }
 
-    
+     /**
+    * Get value
+    *
+    * @return string
+    */
+    public function getValue(){
+        return $this->value;
+    }
+    /**
+    * Set name
+    *
+    * @param string $name
+    * @return Url
+    */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
 
      /**
      * Get status
@@ -164,7 +182,7 @@ class Website implements InputFilterAwareInterface
     {
         $this->id = (isset($data['id']))? $data['id'] : null;
         $this->name = (isset($data['name']))? $data['name'] : null;
-        //$this->value = (isset($data['value']))? $data['value'] : null;
+        $this->value = (isset($data['value']))? $data['value'] : null;
         $this->status = (isset($data['status']))? $data['status'] : null;
     }
      /**
@@ -208,6 +226,24 @@ class Website implements InputFilterAwareInterface
 
             $inputFilter->add($factory->createInput(array(
                 'name'     => 'name',
+                'required' => true,
+                'filters'  => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name'    => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min'      => 1,
+                            'max'      => 100,
+                        ),
+                    ),
+                ),
+            )));
+             $inputFilter->add($factory->createInput(array(
+                'name'     => 'value',
                 'required' => true,
                 'filters'  => array(
                     array('name' => 'StripTags'),

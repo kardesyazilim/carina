@@ -10,8 +10,8 @@ return array(
                 'eventmanager'  => 'orm_default',
 
                 'params' => array(
-                    'host'     => '127.0.0.1',
-                    'port'     => '3306',
+                    'host'     => 'localhost',
+                    'port'     => '3307',
                     'user'     => 'root',
                     'password' => 'qweytr',
                     'dbname'   => 'dinamo_master',
@@ -27,7 +27,7 @@ return array(
 
                 'driver'            => 'orm_default',
 
-                'generate_proxies'  => false,
+                'generate_proxies'  => true,
                 'proxy_dir'         => '/data/DoctrineORMModule/Proxy',
                 'proxy_namespace'   => 'DoctrineProxies'
             )

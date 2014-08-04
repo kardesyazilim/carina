@@ -33,8 +33,8 @@ class IndexController extends AbstractActionController {
            
         $url = $this->getEvent()->getRouteMatch()->getParam('url'); 
         $returnUrl = $this->getRequest()->getServer('HTTP_REFERER');
-        if($url == 'kurumsal' || $url == 'bireysel' ){
-            if(empty($url)){
+        if($url == '' || $url == 'kurumsal' || $url == 'bireysel' ){
+            if($url == ''){
                 $session->offsetSet('url', 'bireysel');
                 
             }

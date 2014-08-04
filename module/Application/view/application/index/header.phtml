@@ -19,10 +19,10 @@
                                 echo '<li><a href="'.$this->serverUrl("/cms/".$header->getName()).'">'.$header->getName().'</a></li>';
                             }**/
                             if($header->getName() == $activeUrl ){
-                                    echo '<li  class="active" ><a href="'.$this->serverUrl("/cms/".$header->getName()).'">'.$header->getName().'</a></li>'; 
+                                    echo '<li  class="active" ><a href="'.$this->serverUrl("/cms/".$header->getName()).'">'.$header->getValue().'</a></li>'; 
                             }
                             else{
-                                echo '<li><a href="'.$this->serverUrl("/cms/".$header->getName()).'">'.$header->getName().'</a></li>';
+                                echo '<li><a href="'.$this->serverUrl("/cms/".$header->getName()).'">'.$header->getValue().'</a></li>';
                             }
                         }
                         ?>

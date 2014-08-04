@@ -244,6 +244,7 @@ DROP TABLE IF EXISTS `core_website`;
 CREATE TABLE `core_website` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `core_website_name` varchar(100) DEFAULT NULL,
+  `core_website_value` varchar(100) DEFAULT NULL,
   `status` int(1) DEFAULT NULL,
   `create_time` timestamp NULL DEFAULT 0,
   `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -255,7 +256,7 @@ CREATE TABLE `core_website` (
 --  Records of `core_website`
 -- ----------------------------
 BEGIN;
-INSERT INTO `core_website` VALUES ('1', 'bireysel', '1', '2014-07-31 17:37:37', '2014-07-31 17:37:37'), ('2', 'kurumsal', '1', '2014-07-31 17:37:48', '2014-07-31 17:37:48');
+INSERT INTO `core_website` VALUES ('1', 'bireysel', 'BİREYSEL','1', '2014-07-31 17:37:37', '2014-07-31 17:37:37'), ('2', 'kurumsal', 'KURUMSAL', '1', '2014-07-31 17:37:48', '2014-07-31 17:37:48');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
