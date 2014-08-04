@@ -167,5 +167,8 @@ class IndexController extends AbstractActionController {
 
         return $this->_objectManager;
     }
+    protected function campainAction(){
+
+    }
 
 }
