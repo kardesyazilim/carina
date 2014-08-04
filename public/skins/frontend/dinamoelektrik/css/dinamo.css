@@ -1692,6 +1692,10 @@ footer .dinamo-icon-proper:before {
 .accordion dt {
       padding: 10px;
       cursor: pointer;
+      display: block;
+        color: black;
+        font-weight: bold;
+        font-size: 13px;
       border-bottom: 1px solid #dadada;
       }
 .accordion dd {
@@ -1699,12 +1703,6 @@ footer .dinamo-icon-proper:before {
     border-bottom: 1px solid #dadada;
 
 }
-.accordion a {
-        display: block;
-        color: black;
-        font-weight: bold;
-        font-size: 13px;
-      }
 .accordion dd {
      border-top: 0;
      font-size: 13px;
