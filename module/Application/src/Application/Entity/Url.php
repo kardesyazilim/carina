@@ -31,8 +31,7 @@ class Url implements InputFilterAwareInterface
      *
      * @ORM\Column(name="core_url_key", type="string", length=100, unique=true, nullable=false)
      */
-    private $name;//core_url_key varchar 100 uniq
-
+    private $name;
     /**
      * @var integer
      *

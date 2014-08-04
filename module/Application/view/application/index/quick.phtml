@@ -1,15 +1,23 @@
+<?php
 
+?>
                         <ul class="online-menu clearfix">
                         	<?php 
-                        	foreach ($quicks as $quick){
-                        		print_r($quick->getName());
-                        	}
+                        	if($quicks){
+                               // $url = getRepository('\Application\Entity\Website')->findBy(array('status'=>'1'));
+                               //$test = $this->getUrl();
 
+                            foreach ($quicks as $quick){
+                        		//print_r($quick->getName());
+                        		echo '<li><a href="'.$this->serverUrl("/cms/".$quick->getUrl()->getName()).'" title="'.$quick->getName().'"><span class="'.$quick->getIcon().'"></span>'.$quick->getName().'</a></li>';
+                        	}
+                        	}
+                        	else{
+                        		echo '<li><a href="" title="">Hızlı Kategori Bulunamadı</a></li>';
+                        	}
+                            //print_r($test);
                         		?>
-                             <!--<li><a href="#"><span class="ico-basvur"></span>Hemen Başvur</a></li>
-                             <li><a href="#"><span class="ico-basvur"></span>Ödeme Yap</a></li>
-                             <li><a href="#"><span class="ico-online"></span>Online İşlem Merkezi</a></li>-->
                          </ul>
                     </div>
                 </div>
-                <?php //var_dump($quicks);?>
+           

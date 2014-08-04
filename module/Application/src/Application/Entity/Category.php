@@ -50,7 +50,23 @@ class Category implements InputFilterAwareInterface
      * @ORM\ManyToOne(targetEntity="Url")
      * @ORM\JoinColumn(name="core_url_id", referencedColumnName="id")
      */
+    
     private $urlId;
+
+     /**
+     * @ORM\ManyToOne(targetEntity="Website")
+     * @ORM\JoinColumn(name="core_website_id", referencedColumnName="id")
+     */
+    
+    private $websiteId;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="icon_spec", type="string", length=50, nullable=false)
+     */
+    private $icon;
 
     /**
      * @var integer
@@ -110,7 +126,45 @@ class Category implements InputFilterAwareInterface
     }
 
 
+    /**
+    * Set icon
+    *
+    * @param string $icon
+    * @return Category
+    */
+    public function setIcon($icon)
+    {
+        $this->icon = $icon;
+
+        return $this;
+    }
+
+    /**
+    * Get name
+    *
+    * @return string
+    */
+    public function getIcon()
+    {
+        return $this->icon;
+    }
+
+
+    /**
+    * Get url
+    *
+    * @param integer $urlId
+    * @return Category
+    */
     
+
+    public function getUrl(){
+         
+        return $this->urlId;
+
+    }
+
+
     /**
     * Set url
     *

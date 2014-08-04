@@ -2029,6 +2029,8 @@ input[type="text"].thin-input {
 
 }
 
+input.homeTariff {min-width:200px;}
+div.select2-container {width:222px;}
 
 
 .ico-online {

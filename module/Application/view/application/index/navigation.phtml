@@ -1,38 +1,48 @@
  <nav>
                     <div class="container">
-                        <a href="#" class="logo">Dinamo Eleltrik</a>
+                    <?php 
+                    echo '<a href="'.$this->serverUrl("/cms/".$website).'" class="logo" title="Dinamo Elektrik">Dinamo Elektrik</a>';
+
+                    ?>
                         <ul>
-                            <li><a href="kesfet.html">KEŞFET</a></li>
-                            <li><a href="#">TARİFELER</a></li>
-                            <li class="dd-menu">
-                                <a href="#">KAMPANYALAR</a>
-                                <div class="dropdown_fullwidth">
-                                    <ul>
-                                        <li><a href="#">KAMPANYA ADI BİR</a></li>
-                                        <li><a href="#">KAMPANYA ADI İKİ</a></li>
-                                        <li><a href="#">KAMPANYA ADI ÜÇ</a></li>
-                                    </ul>
+
+                        <?php
+
+                        if($navs){
+                            foreach($navs as $nav){
+                                echo '<li><a href="'.$this->serverUrl("/cms/".$nav->getUrl()->getName()).'">'.$nav->getName().'</a></li>';    
+                            }
+                            
+
+                        }
+                        else{
+                            echo '<li><a href="">İlgili Menu Bulunamadı</a></li>';
+                        }
 
 
-                                </div>
-                            </li>
-                            <li><a href="#">DİNAMOLU OLMAK İSTİYORUM</a></li>
+
+                        ?>
+                           
                         </ul>
                         <div class="menu-icon">
                             <ul class="hidden-dd">
-                                <li><a href="kesfet.html">KEŞFET</a></li>
-                                <li><a href="#">TARİFELER</a></li>
-                                <li class="show-nested-item">
-                                    <a href="#">KAMPANYALAR</a>
-                                    <div class="nested-dd">
-                                        <ul>
-                                            <li><a href="#">KAMPANYA ADI BİR</a></li>
-                                            <li><a href="#">KAMPANYA ADI İKİ</a></li>
-                                            <li><a href="#">KAMPANYA ADI ÜÇ</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li><a href="#">DİNAMOLU OLMAK İSTİYORUM</a></li>
+                               
+                        <?php
+
+                        if($navs){
+                            foreach($navs as $nav){
+                                echo '<li><a href="'.$this->serverUrl("/cms/".$nav->getUrl()->getName()).'">'.$nav->getName().'</a></li>';    
+                            }
+                            
+
+                        }
+                        else{
+                            echo '<li><a href="">İlgili Menu Bulunamadı</a></li>';
+                        }
+
+
+
+                        ?>
                             </ul>
                         </div>
                     </div>
