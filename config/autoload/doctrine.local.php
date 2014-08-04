@@ -15,7 +15,11 @@ return array(
                     'user'     => 'root',
                     'password' => 'qweytr',
                     'dbname'   => 'dinamo_master',
-                )
+                    'charset' => 'utf8',
+                    'driverOptions' => array(
+                        1002=>'SET NAMES utf8'
+                ),
+                ),
             ),
         ),
 
@@ -28,7 +32,7 @@ return array(
                 'driver'            => 'orm_default',
 
                 'generate_proxies'  => true,
-                'proxy_dir'         => '/data/DoctrineORMModule/Proxy',
+                'proxy_dir'         => __DIR__.'/../../data/DoctrineORMModule/Proxy',
                 'proxy_namespace'   => 'DoctrineProxies'
             )
         ),

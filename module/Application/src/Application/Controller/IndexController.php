@@ -26,8 +26,9 @@ class IndexController extends AbstractActionController {
 
         //session and cookie blok
 
-
-     
+       
+       //var_dump($tests[0]);
+        //die();
        // echo 
 
            
@@ -73,7 +74,8 @@ class IndexController extends AbstractActionController {
 
 
        
-
+        //var_dump($this->getNav()[0]->getName());
+        //die();
 
 
         $view = new ViewModel();
@@ -86,7 +88,7 @@ class IndexController extends AbstractActionController {
         $headerView->setTemplate('index/header');
 
         //quick nav
-        $quickView = new ViewModel(array('quicks' => 'dasf' ,'website' => $this->getWebsiteId()[0]->getId()) );
+        $quickView = new ViewModel(array('quicks' => $this->getNav() ,'website' => $this->getWebsiteId()[0]->getId()) );
         $quickView->setTemplate('index/quick');
         //main nav
         $navView = new ViewModel(array('navs'=>'navs','website' => $this->getWebsiteId()[0]->getId() ));
@@ -115,7 +117,7 @@ class IndexController extends AbstractActionController {
     }
     protected function getNav(){
         //add param
-        $navs = $this->getObjectManager()->getRepository('\Application\Entity\Category')->findBy(array('status'=>'1','parentId'=>'0',''=>''));
+        return $this->getObjectManager()->getRepository('\Application\Entity\Category')->findBy(array('status'=>'1','parentId'=>'1','catId'=>'5','id'=>'2'));
     }
     protected function getWebsiteId(){
        return $this->getObjectManager()->getRepository('\Application\Entity\Website')->findBy(array('status'=>'1','name'=>$this->_websiteName));

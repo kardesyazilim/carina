@@ -45,6 +45,7 @@ class Category implements InputFilterAwareInterface
      * @ORM\JoinColumn(name="category_group_id", referencedColumnName="id")
      */
     private $catId;
+
     /**
      * @ORM\ManyToOne(targetEntity="Url")
      * @ORM\JoinColumn(name="core_url_id", referencedColumnName="id")
@@ -71,6 +72,19 @@ class Category implements InputFilterAwareInterface
     {
         return $this->id;
     }
+    /**
+    * Set parentId
+    *
+    * @param string $parentId
+    * @return Category
+    */
+
+    public function getParentId(){
+        return $this->parentId;
+
+   }
+   
+
 
     /**
     * Set name
@@ -84,6 +98,19 @@ class Category implements InputFilterAwareInterface
 
         return $this;
     }
+
+    /**
+    * Get name
+    *
+    * @return string
+    */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+
+    
     /**
     * Set url
     *
@@ -98,15 +125,7 @@ class Category implements InputFilterAwareInterface
 
     }
 
-    /**
-    * Get name
-    *
-    * @return string
-    */
-    public function getName()
-    {
-        return $this->name;
-    }
+    
 
     /**
     * Exchange array - used in ZF2 form

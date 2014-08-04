@@ -12,7 +12,7 @@ use Zend\InputFilter\InputFilterInterface;
 /**
  * Category
  *
- * @ORM\Table(name="categories")
+ * @ORM\Table(name="categories_group")
  * @ORM\Entity
  */
 class CategoryGroup implements InputFilterAwareInterface
@@ -29,27 +29,10 @@ class CategoryGroup implements InputFilterAwareInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="category_name", type="string", length=100, nullable=false)
+     * @ORM\Column(name="category_group_name", type="string", length=100, nullable=false)
      */
     private $name;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="parent_id", type="integer")
-     */
-    private $parentId;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Url")
-     * @ORM\JoinColumn(name="category_group_id", referencedColumnName="id")
-     */
-    private $urlId;
-    /**
-     * @ORM\ManyToOne(targetEntity="Url")
-     * @ORM\JoinColumn(name="core_url_id", referencedColumnName="id")
-     */
-    private $urlId;
 
     /**
      * @var integer
@@ -84,20 +67,7 @@ class CategoryGroup implements InputFilterAwareInterface
 
         return $this;
     }
-    /**
-    * Set url
-    *
-    * @param integer $urlId
-    * @return Category
-    */
     
-
-    public function setUrl($urlId){
-        $this->urlId = $urlId;
-        return $this;
-
-    }
-
     /**
     * Get name
     *
@@ -171,7 +141,7 @@ class CategoryGroup implements InputFilterAwareInterface
                         'options' => array(
                             'encoding' => 'UTF-8',
                             'min'      => 1,
-                            'max'      => 255,
+                            'max'      => 100,
                         ),
                     ),
                 ),

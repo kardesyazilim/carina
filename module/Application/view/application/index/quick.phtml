@@ -1,8 +1,15 @@
 
                         <ul class="online-menu clearfix">
-                             <li><a href="#"><span class="ico-basvur"></span>Hemen Başvur</a></li>
+                        	<?php 
+                        	foreach ($quicks as $quick){
+                        		print_r($quick->getName());
+                        	}
+
+                        		?>
+                             <!--<li><a href="#"><span class="ico-basvur"></span>Hemen Başvur</a></li>
                              <li><a href="#"><span class="ico-basvur"></span>Ödeme Yap</a></li>
-                             <li><a href="#"><span class="ico-online"></span>Online İşlem Merkezi</a></li>
+                             <li><a href="#"><span class="ico-online"></span>Online İşlem Merkezi</a></li>-->
                          </ul>
                     </div>
                 </div>
+                <?php //var_dump($quicks);?>
