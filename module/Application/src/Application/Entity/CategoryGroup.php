@@ -15,7 +15,7 @@ use Zend\InputFilter\InputFilterInterface;
  * @ORM\Table(name="categories")
  * @ORM\Entity
  */
-class Category implements InputFilterAwareInterface
+class CategoryGroup implements InputFilterAwareInterface
 {
     /**
      * @var integer
@@ -41,10 +41,10 @@ class Category implements InputFilterAwareInterface
     private $parentId;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CategoryGroup")
+     * @ORM\ManyToOne(targetEntity="Url")
      * @ORM\JoinColumn(name="category_group_id", referencedColumnName="id")
      */
-    private $catId;
+    private $urlId;
     /**
      * @ORM\ManyToOne(targetEntity="Url")
      * @ORM\JoinColumn(name="core_url_id", referencedColumnName="id")

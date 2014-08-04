@@ -115,7 +115,7 @@ class IndexController extends AbstractActionController {
     }
     protected function getNav(){
         //add param
-        $navs = $this->getObjectManager()->getRepository('\Application\Entity\Category')->findBy(array('status'=>'1'));
+        $navs = $this->getObjectManager()->getRepository('\Application\Entity\Category')->findBy(array('status'=>'1','parentId'=>'0',''=>''));
     }
     protected function getWebsiteId(){
        return $this->getObjectManager()->getRepository('\Application\Entity\Website')->findBy(array('status'=>'1','name'=>$this->_websiteName));
