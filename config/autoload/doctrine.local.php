@@ -62,11 +62,11 @@ return array(
 
     // zendframework/zend-developer-tools specific settings
 
-    /*'view_manager' => array(
+    'view_manager' => array(
         'template_map' => array(
             'zend-developer-tools/toolbar/doctrine-orm' => __DIR__.'/../../module/Application/view/zend-developer-tools/toolbar/doctrine-orm.phtml',
         ),
-    ),*/
+    ),
 
     'zenddevelopertools' => array(
         'profiler' => array(
