@@ -1,6 +1,6 @@
 <?php
 
-//cms defautl url query //demek 
+//cms default url query //demek 
 return array(
     'router' => array(
         'routes' => array(
@@ -44,7 +44,7 @@ return array(
                 ),
             ),
             ///
-         /*   
+            
             'manage' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
@@ -58,13 +58,13 @@ return array(
                 'may_terminate' => false,
                 'child_routes' => array(
                     'default' => array(
-                        'type' => 'Segment',
+                        'type' => 'literal',
                         'options' => array(
                             'route' => '/:controller[/:action[/:key]]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'url' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'key' => '[a-zA-Z][a-zA-Z0-9_-]*',
                             ),
                             'defaults' => array(
                                 '__NAMESPACE__' => 'Manage\Controller',
@@ -75,9 +75,9 @@ return array(
                     ),
                 ),
             ),
-            */
+           
 
-            ///
+        
 
         ),
     ),
