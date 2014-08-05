@@ -8,7 +8,7 @@ return array(
         'OcraServiceManager',
         'BjyProfiler',
         'Application',
-        //'Manage',
+        'Manage',
         //'ZfcRbac',
 
     ),

@@ -43,6 +43,41 @@ return array(
                     ),
                 ),
             ),
+            ///
+         /*   
+            'manage' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route' => '/manage',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Manage\Controller',
+                        'controller' => 'Index',
+                        'action' => 'index',
+                    ),
+                ),
+                'may_terminate' => false,
+                'child_routes' => array(
+                    'default' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/:controller[/:action[/:key]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'url' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                '__NAMESPACE__' => 'Manage\Controller',
+                                'controller' => 'Index',
+                                'action' => 'index',
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            */
+
+            ///
 
         ),
     ),
