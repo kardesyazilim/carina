@@ -116,7 +116,7 @@ $(function() {
     });
 
     // sss accordion
-    var allPanels = $('.accordion > dd').hide();
+    /*var allPanels = $('.accordion > dd').hide();
 
     $('.accordion > dt').click(function() {
         $('.accordion > dt').removeClass('border-bottom-none');
@@ -124,7 +124,23 @@ $(function() {
         $('compare-box').addClass('border-bottom-none');
         $(this).next().slideDown();
         return false;
-    });
+    });*/
+///
+///<dt>Tedarikçi firmadan elektrik alan serbest tüketicinin arıza, bakım konularında dağıtım firmaları ayrımcılık yapılabilir mi?</dt>
+///<dd style="display: none;">TODO: HUKUKTAN ALACAĞIZ CEVABI</dd>
+///
+    var allPanels = $('.accordion > dd').hide();
+    $(".accordion > dt").click(function(){
+      $(".accordion > dd").hide();
+  // Show the element next to this
+  //$(this).next().show();
+
+      $(this).next().slideToggle();
+    })
+
+
+
+
 
     // tarife detay aç/kapa
 
