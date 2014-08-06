@@ -132,11 +132,13 @@ $(function() {
     var allPanels = $('.accordion > dd').hide();
     $(".accordion > dt").click(function(){
       $(".accordion > dd").hide();
-  // Show the element next to this
-  //$(this).next().show();
-
+      $(this).unbind('click',function(){
+        //$()
+        //burada kaldım
+      });
       $(this).next().slideToggle();
     })
+  
 
 
 
