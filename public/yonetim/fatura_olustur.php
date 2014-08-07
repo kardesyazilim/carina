@@ -10,6 +10,7 @@
 
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.css">
 </head>
 <body>
 <!--<div id="faturaonaybody">
@@ -66,7 +67,7 @@ $db = new ezSQL_mysql('root','qweytr','dinamo_master','localhost','utf-8');
 
 date_default_timezone_set('Europe/Istanbul');
 
-include 'excel/Classes/PHPExcel/IOFactory.php';
+//include 'excel/Classes/PHPExcel/IOFactory.php';
 
 /*$inputFileName = 'sayac_okumalari.xlsx';
 
@@ -161,7 +162,7 @@ for ($row = 1; $row <= $highestRow; $row++) {
 
 
 $toplamTuketim = 86.0623;
-$indirimOrani = 12;
+$indirimOrani = 10;
 
 
 function hesapla($tip,$toplamTuketim,$indirimOrani,$sayacTip){
@@ -220,8 +221,7 @@ function hesapla($tip,$toplamTuketim,$indirimOrani,$sayacTip){
 <div class="row">
 <div class="col-lg-8">
 <div class="table-responsive">
-  <table class="table">
-   <table class="table">
+   <table id="deneme">
       <thead>
         <tr>
 
@@ -266,7 +266,7 @@ function hesapla($tip,$toplamTuketim,$indirimOrani,$sayacTip){
         </tr>';
       echo '</tbody>
     </table>
-  </table>
+ 
 </div>
 </div>
 </div>
@@ -276,7 +276,8 @@ function hesapla($tip,$toplamTuketim,$indirimOrani,$sayacTip){
 }
 
 
-hesapla('sanayi',$toplamTuketim,$indirimOrani,'');
+
+//hesapla('sanayi',$toplamTuketim,$indirimOrani,'');
 //$toplanTuketimTutari = ($toplamTuketim);
 
 
@@ -367,10 +368,86 @@ echo '<b>Toplam KDVli </b>'.$toplam*1.18;
 // 
 //
 // 
+// 
+// 
+// 
+
+function controlFatura($db){
+  echo '<div id="detay" style="margin:20px auto;">';
+  echo '<div class="container">';
+  echo '<div class="row">';
+  echo '<div class="col-lg-12">';
+  echo '<div id="controlCenter">';
+  echo '<table id="pmumTable" class="table table-striped table-bordered dataTable" cellspacing="0" width="100%" role="grid" aria-describedby="example_info" style="width: 100%;">';
+  echo '<thead>';
+  echo '<tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column ascending" style="width: 135px;">ID</th>';
+  echo '<th>Şehir</th>';
+  echo '<th>Sayaç Adı</th>';
+  echo '<th>Etso Kodu</th>';
+  echo '<th>Durum</th>';
+  echo '<th>Kayıplı Çekis</th>';
+  echo '<th>İşlem</th>';
+  
+  echo '</tr>';
+  echo '</thead>';
+    echo '<tfoot>';
+  echo '<tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column ascending" style="width: 135px;">ID</th>';
+  echo '<th>Şehir</th>';
+  echo '<th>Sayaç Adı</th>';
+  echo '<th>Etso Kodu</th>';
+  echo '<th>Durum</th>';
+  echo '<th>Kayıplı Çekis</th>';
+  echo '<th>İşlem</th>';
+  
+  echo '</tr>';
+  echo '</tfoot>';
+
+
+
+  echo '<tbody>';
+  
+  $pmumQuery = "select * from temp_pmum_okuma";
+  $pmums = $db->get_results($pmumQuery);
+  //$db->debug();
+  foreach($pmums as $pmum){
+
+  echo '<tr role="row" class="odd">';
+  echo '<td class="sorting_1">'.$pmum->id.'</td>';
+  echo '<td>'.$pmum->sayac_sehir.'</td>';
+  echo '<td>'.$pmum->sayac.'</td>';
+  echo '<td>'.$pmum->etso_kodu.'</td>';
+  echo '<td>'.$pmum->durum.'</td>';
+  echo '<td>'.$pmum->kayipli_cekis_mwh.'</td>';
+  echo '<td><a href="fatura_duzenle.php?id='.$pmum->id.'">Düzenle</a></td>';
+  echo '</tr>';
+  
+
+
+  }
+
+  echo '</tbody>';
+  echo '</table>';
+  echo '</div>';
+  echo '</div>';
+  echo '</div>';
+  echo '</div>';
+  echo '</div>';
+}
+controlFatura($db);
 ?>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script src="//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+<script type="text/javascript" class="init">
+
+$(document).ready(function() {
+  $('#pmumTable').dataTable();
+} );
+
+  </script>
+
 </body>
 </html>
 
