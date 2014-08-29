@@ -1,0 +1,253 @@
+$(document).ready(function() {
+        $('.select').select2({
+            minimumResultsForSearch: -1
+        });
+
+        $('#indirim').change(function () {
+	      $('#indirim-kod').fadeToggle();
+	    });
+
+	    $('.map-to').bind('blur', function () {
+          if ( $(window).width() < 800 ) {
+            return;
+          }
+	        $('#'+ $(this).data('href') ).addClass('hide');
+	    }).bind('focus', function () {
+          if ( $(window).width() < 800 ) {
+            return;
+          }
+	        $('#'+ $(this).data('href') ).removeClass('hide');
+	    });
+
+	    $(".abone-grubu").click(function() {
+	        $('#map-abone-grubu').removeClass('hide');
+	    });
+      var $dd = $('nav.secondary'),
+          $navbar = $('#navbar').length>0 ? $('#navbar') : $('aside.green-bg'),
+          $mainDd = $('.hidden-dd'),
+          $nestedDd = $('header .nested-dd ul');
+
+      $('#user-info-wrapper .selected').on('click', function( e ) {
+        if ( $dd.is(':visible') ) {
+          $dd.slideUp();
+          $('body').off('click.close tap.close');
+          return;
+        }
+        $dd.slideDown();
+        $navbar.css('left', -$navbar.width() + 'px');
+        $navbar.addClass('forced-left');
+        $mainDd.slideUp();
+        e.stopImmediatePropagation();
+        $('body').on('click.close tap.close', function( e ) {
+          if ( $(e.target).parents('.secondary').length == 0 ) {
+            $('nav.secondary').slideUp();
+            $('body').off('click.close tap.close');
+          }
+        })
+      })
+      $('.show-menu-btn').on('click', function( e ) {
+        $navbar.css({'left': 0});
+        $mainDd.slideUp();
+        $nestedDd.slideUp();
+        $dd.slideUp();
+
+        $navbar.removeClass('forced-left');
+        e.stopImmediatePropagation();
+        $('body').on('click.close tap.close', function(e) {
+          if ( $(e.target).parents('#navbar').length == 0 ) {
+            $navbar.css('left', -$navbar.width() + 'px');
+            $navbar.addClass('forced-left');
+            $('body').off('click.close tap.close');
+          }
+        })
+      })
+      $('#navbar div input').on('click', function() {
+        $navbar.css('left', -$navbar.width() + 'px');
+        $navbar.addClass('forced-left');
+        $('body').off('click.close tap.close');
+      })
+      $('.menu-icon').on('click', function( e ) {
+        if ( $mainDd.is(':visible') ) {
+          $mainDd.slideUp();
+          $nestedDd.slideUp();
+          $('body').off('click.close tap.close');
+          return;
+        }
+        $mainDd.slideDown();
+        $navbar.css('left', -$navbar.width() + 'px');
+        $navbar.addClass('forced-left');
+        $dd.slideUp();
+        e.stopImmediatePropagation();
+        $('body').on('click.close tap.close', function( e ) {
+          if ( $(e.target).parents('.secondary').length == 0 ) {
+            $mainDd.slideUp();
+            $nestedDd.slideUp();
+            $('body').off('click.close tap.close');
+          }
+        })
+      })
+      $('.show-nested-item a').on('click',function( e ) {
+          e.stopImmediatePropagation();
+          if ( !$nestedDd.is(':visible') ) {
+            $nestedDd.slideDown();
+            return;
+          };
+          return false
+      })
+      $('#check-all').on('change', function() {
+        $('.select-table input[type="checkbox"]').not(this).prop('checked', $(this).prop('checked') );
+        updateValue();
+      })
+      $('.select-table input[type="checkbox"]').not( $('#check-all')[0] ).on('change', updateValue);
+
+      function updateValue() {
+        var sum = 0;
+        $('.select-table input[type="checkbox"]:checked').not( $('#check-all')[0] ).each(function() {
+          sum += parseFloat( $(this).parent().parent().find('td:last').html() );
+        })
+        $('#total-val').html( sum.toFixed(2) + ' TL');
+      }
+
+        $(".nano").nanoScroller({ alwaysVisible: true });
+
+  //tab script
+
+        $('.tab-content > div.tab:first-child').show();
+        $(".tab-menu li a").click(function(event) {
+              event.preventDefault();
+              $(this).parent().addClass("active");
+              $(this).parent().siblings().removeClass("active");
+              var tab = $(this).attr("href");
+              $(".tab-content div.tab").not(tab).css("display", "none");
+              $(tab).fadeIn();
+          });
+
+  });
+
+$(function() {
+
+   // fade in divs
+var fadein = $('div.lazy');
+$.each(fadein, function(i, item) {
+	setTimeout(function() {
+		$(item).fadeIn(1000); // duration of fadein
+	}, 1000 * i) // duration between fadeins
+	});
+
+   // sss accordion
+ var allPanels = $('.accordion > dd').hide();
+
+  $('.accordion > dt > a').click(function() {
+  	$('.accordion > dt').removeClass('border-bottom-none');
+    allPanels.slideUp();
+    $('compare-box').addClass('border-bottom-none');
+    $(this).parent().next().slideDown();
+    return false;
+  });
+
+   // tarife detay aç/kapa
+
+  $( ".schedule-details-link" ).click(function() {
+      $('.schedule-open .close').hide();
+      $(".compare-box > a[id^='karsilastir-']").show();
+      $('.compare-box').removeClass('schedule-open');
+      $(this).parent().addClass('schedule-open');
+      $('.schedule').hide();
+      $('.schedule-open .close').show();
+      var soruid = $(this).data("id");
+      $('.schedule .schedule-details[data-id='+ soruid +']').parent().slideToggle("fast");
+      $(".compare-box.schedule-open > a[id^='karsilastir-']").hide();
+  });
+
+  $( ".close a" ).click(function() {
+      $('.schedule').hide();
+      $('.schedule-open .close').hide();
+      $('.compare-box').removeClass('schedule-open');
+      $(".compare-box > a[id^='karsilastir-']").show();
+
+       return false;
+  });
+
+
+//modal window script
+     $('.open-modal').on('click', function() {
+        var popupId = $(this).attr('href') ? $(this).attr('href').replace('#', '') : undefined,
+            $popup = $('#' + popupId );
+        if ( $popup.length > 0 ) {
+          $popup.parent().fadeIn(200);
+        }
+        return false;
+     })
+     $('.modal_close').on('click', function() {
+       $(this).parents('.modal-popup-wrapper').fadeOut(200);
+       return false;
+     })
+     $('.modal-popup-wrapper').on('click', function( e ) {
+       if ( $(e.target).parents('.modal').length == 0 ) {
+        $(this).fadeOut(200);
+       }
+     })
+     /*$(".open-modal").leanModal({
+        overlay : 0.4,
+        closeButton: ".modal_close"
+      });*/
+
+
+ // tarife sihirbazı soru aç/kapa
+
+  $( ".next-question" ).click(function() {
+      var wrapper = $( ".next-question" ).parents('form'),
+          soruid = $(this).data("id");
+      $('.question-content', wrapper).hide();
+      $('.question-content[data-id='+ soruid +']', wrapper).fadeToggle("fast");
+      return false;
+  });
+
+
+
+});
+
+
+//Tarife karşılaştırma script
+ $('#open,#compare-container > .container > a').hide();
+
+                function getSelectedIds() {
+                    return $('.box .prod-id').map(function() { return $(this).text(); }).toArray();
+                }
+
+                function updateLinkAndCounter() {
+                    var ids = getSelectedIds().map(function(x,i) {
+                        return ['P', ++i, '=', x].join('');
+                    });
+                    // $("p.alert-text").text(ids.length >= 2 ? $('#compare-container > .container > a').attr('href', '#' + ids.join('&')).attr('id','openDiv').show() : $('#open,#compare-container > .container > a').hide() );
+                    $("p.alert-text").text(ids.length >= 2 ? $('#compare-container > .container > a').attr('href', '#open-modal2' ).attr('id','openDiv').show() : $('#open,#compare-container > .container > a').hide() );
+                        $("#alert").text(ids.length == 1 ? 'Karşılaştırma yapabilmek için en az 1 adet tarife daha eklemelisiniz' : '' );
+                }
+
+                $(".compare-btn").click(function() {
+                    var id=$(this).data('comparename'); //$(this).next('.ProdId').text();
+
+                    var selected = getSelectedIds();
+                    if(selected.length == 3) return;
+                    if(selected.indexOf(id) != -1) return; // item already added
+
+                    $('<div/>', { 'class': 'box' })
+                    .append($('<span/>', { class: 'prod-id', text: id }))
+                    .append($('<a/>', { class: 'close', href: '#', text: 'x', id: id }))
+                       .appendTo('#compare-container > .container');
+                    $(this).addClass("added").text('Eklendi');
+                    updateLinkAndCounter();
+                    $("#compare-container").removeClass("hidden");
+                    return false; 
+                });
+
+                $( document ).on("click",'.close', function() {
+                    $(this).parent().remove();
+                    id = $(this).attr('id');
+                    $('a[data-comparename="'+ id +'"]').removeClass("added").text('Karşılaştır');
+                    updateLinkAndCounter();
+                    return false; 
+                });
+                $( document ).on("click",'.added', function() {
+                    return false;
+                    });

@@ -2265,6 +2265,9 @@ hr.center {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 }
+small{
+	font-size: 9px;
+}
 @media screen and (max-width:1024px) {
 	.cycle-overlay {
 		width: 250px;

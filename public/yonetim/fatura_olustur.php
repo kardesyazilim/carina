@@ -161,8 +161,8 @@ for ($row = 1; $row <= $highestRow; $row++) {
 //
 
 
-$toplamTuketim = 86.0623;
-$indirimOrani = 10;
+$toplamTuketim = 348536.9;
+$indirimOrani = 5;
 
 
 function hesapla($tip,$toplamTuketim,$indirimOrani,$sayacTip){
@@ -170,11 +170,18 @@ function hesapla($tip,$toplamTuketim,$indirimOrani,$sayacTip){
 	$tarife[] = array(
 	'sanayi' => array(
 	'birimFiyat' => 17.5666,//Perakende Tek Zamanlı Enerji Bedeli
-	'kkFiyat' => 2.3253,//K/K Bedeli
+	'kkFiyat' => 0.23253,//K/K Bedeli
 	'psbhFiyat' => 0.6075,//Perakende Satış Hizmet Bedeli
 	'iltFiyat' => 0.8945,//İletim Bedeli
 	'dagitimFiyat' => 1.4424,//Dağıtım Bedeli
 	),
+  'ticaratane' => array(
+  'birimFiyat' => 20.7927,//Perakende Tek Zamanlı Enerji Bedeli
+  'kkFiyat' => 3.5582,//K/K Bedeli
+  'psbhFiyat' => 0.6075,//Perakende Satış Hizmet Bedeli
+  'iltFiyat' => 0.8945,//İletim Bedeli
+  'dagitimFiyat' => 2.8061,//Dağıtım Bedeli
+  ),
 	'mesken' => array(
 	'birimFiyat' => 20.7728,//Perakende Tek Zamanlı Enerji Bedeli
 	'kkFiyat' => 3.3251,//K/K Bedeli
@@ -188,11 +195,11 @@ function hesapla($tip,$toplamTuketim,$indirimOrani,$sayacTip){
 	$TRT = 0.2;
 	$sayacOG = 5.4480;
 	$sayacAG = 0.5448;
-	$elektrikTuketimVergisi = 0.01;
+	$elektrikTuketimVergisi = 0.05;
 	$enerjiFonu = 0.01;
 
 
-	$sayacTip = $sayacOG;
+	$sayacTip = $sayacAG;
 	$stepOne = $tarife[0][$tip];
 
 	$birimFiyat = $stepOne['birimFiyat'];
@@ -220,7 +227,7 @@ function hesapla($tip,$toplamTuketim,$indirimOrani,$sayacTip){
 <div class="container">
 <div class="row">
 <div class="col-lg-8">
-<div class="table-responsive">
+<!--<div class="table-responsive">
    <table id="deneme">
       <thead>
         <tr>
@@ -243,16 +250,29 @@ function hesapla($tip,$toplamTuketim,$indirimOrani,$sayacTip){
           <th>genelKdvDahilToplam</th>
         </tr>
       </thead>
-      <tbody>';
-
-        echo '<tr class="active">
+      <tbody>-->';
+        echo 'Tüketim Bedeli :'.$tuketimBedeli.'</br>';
+        echo 'Kayıp Kaçak Bedeli :'.$kayipKacakBedeli.'</br>';
+        echo 'Psbh Tutar :'.$psbhTutar.'</br>';
+        echo 'Dağıtım Tutar :'.$dagitimTutar.'</br>';
+        echo 'İletim Tutar :'.$iletimTutar.'</br>';
+        echo 'Sayaç Tutar :'.$sayacTutar.'</br>';
+        echo 'TRT Tutar :'.$trtTutar.'</br>';
+        echo 'Elektrik Tüketim :'.$elektrikTuketimVergisiTutar .'</br>';
+        echo 'Enerji Fonu :'.$enerjiFonuTutar.'</br>';
+        echo 'Genel Toplam :'.$genelToplam.'</br>';
+        echo 'Genel Toplam KDV :'.$genelToplamKdv.'</br>';
+    
+        echo 'TRT Tutar :'.$genelToplamKdv.'</br>';
+        echo 'TRT Tutar :'.$genelKdvDahilToplam.'</br>';
+        /*echo '<tr class="active">
          
           
           <td>'.$tuketimBedeli.'</td>
           <td>'.$kayipKacakBedeli.'</td>
           <td>'.$psbhTutar.'</td>
           <td>'.$dagitimTutar.'</td>
-          <td>'.$iletimTutar.'</td>
+          <td>'.$iletimTutar.' a</td>
           <td>'.$sayacTutar.'</td>
           <td>'.$trtTutar.'</td>
           <td>'.$elektrikTuketimVergisiTutar .'</td>
@@ -263,9 +283,9 @@ function hesapla($tip,$toplamTuketim,$indirimOrani,$sayacTip){
           <td>'.$genelToplamKdv.'</td>
           <td>'.$genelKdvDahilToplam.'</td>
 
-        </tr>';
-      echo '</tbody>
-    </table>
+        </tr>';*/
+      echo '<!--</tbody>
+    </table>--->
  
 </div>
 </div>
@@ -406,9 +426,10 @@ function controlFatura($db){
 
   echo '<tbody>';
   
-  $pmumQuery = "select * from temp_pmum_okuma";
+  $pmumQuery = "select * from temp_pmum_okuma where durum = 'OKUNDU' and status='0'";
   $pmums = $db->get_results($pmumQuery);
   //$db->debug();
+  if($pmums){
   foreach($pmums as $pmum){
 
   echo '<tr role="row" class="odd">';
@@ -424,7 +445,7 @@ function controlFatura($db){
 
 
   }
-
+}
   echo '</tbody>';
   echo '</table>';
   echo '</div>';

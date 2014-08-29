@@ -1,0 +1,281 @@
+
+
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background-color: #ffffff;
+}
+
+
+
+/*fatura block*/
+
+.container-fluid{
+	width: 850px;
+
+
+}
+
+#header{
+	
+
+}
+.faturaUst{
+
+	width: 850px;
+	height: 402px;
+	background-image: url('../img/fatura_ust.png');
+	background-repeat: no-repeat;
+}
+.faturaKapak{
+	position: relative;
+	font-family: 'Conv_MarianinaCnFY-Light';
+	left: 33px;
+	top:270px;
+	color: #414141;
+	font-size: 14px;
+	font-weight:normal;
+	line-height:14px;
+	word-spacing: 3px;
+	letter-spacing: 1px;
+
+}
+.faturaAdiSoyadi{
+	line-height:22px;
+	font-size: 22px;
+		
+}
+.faturaInfo{
+	position: relative;
+	font-family: 'Conv_MarianinaCnFY-Medium';
+	left: 143px;
+	top:100px;
+	font-size: 12px;
+	color: #414141;
+	line-height:12px;
+	word-spacing: 3px;
+	letter-spacing: 1px;
+}
+.faturaInfoContent{
+
+}
+.faturaTutar{
+	position: relative;
+	font-family: 'Conv_MarianinaCnFY-Bold';
+	left: 73px;
+	top:190px;
+	color: #ffffff;
+	font-size: 50px;
+	font-weight:normal;
+	line-height:14px;
+	word-spacing: 3px;
+	letter-spacing: 1px;
+}
+.faturaTutarContent{
+
+}
+.faturaSonOdeme{
+	position: relative;
+	font-size: 16px;
+	left: 110px;
+	top:48px;
+}
+.tarifeDesc{
+	position: relative;
+	font-family: 'Conv_MarianinaCnFY-Bold';
+	left: 53px;
+	top:290px;
+	color: #000;
+	font-size: 16px;
+	font-weight:normal;
+	line-height:16px;
+	word-spacing: 3px;
+	letter-spacing: 1px;
+}
+/*grafik*/
+.linechart{
+	height: 392px;
+	background-image: url('../img/center.png');
+	background-repeat: no-repeat;
+}
+#canvas{
+	position: relative;
+	top:130px;
+	left: -5px;
+}
+
+.priceMonth{
+	position: relative;
+	font-family: 'Conv_MarianinaCnFY-Bold';
+	left: 53px;
+	top:170px;
+	color: #000;
+	font-size:12px;
+	font-weight:normal;
+	line-height:12px;
+	word-spacing: 3px;
+	letter-spacing: 1px;
+}
+.price{
+		position: relative;
+	font-family: 'Conv_MarianinaCnFY-Bold';
+	left: 153px;
+	top:135px;
+	color: #000;
+	font-size:40px;
+	font-weight:normal;
+	line-height: 40px;
+	word-spacing: 3px;
+	letter-spacing: 1px;
+}
+.ipucuresim{
+
+	background-image: url('../img/fatura_ipucu_bireysel.png');
+	background-repeat: no-repeat;
+	height: 287px;
+	width: 850px;
+}
+.fatBack{
+	background-image: url('../img/fatura_detay.png');
+	background-repeat: no-repeat;
+	height: 1192px;
+	width: 850px;
+}
+.faturaTarihi,.isletmeAdi,.tuketimMiktari{
+	position: relative;
+	font-family: 'Conv_MarianinaCnFY-Medium';
+	left: 120px;
+	top:57px;
+	font-size: 8px;
+	color: #414141;
+	line-height: 8px;
+	word-spacing: 3px;
+	letter-spacing: 1px;
+}
+.aboneNo,.aboneGroup,.tuketimBirimFiyat{
+	position: relative;
+	font-family: 'Conv_MarianinaCnFY-Medium';
+	left: 120px;
+	top:60px;
+	font-size: 8px;
+	color: #414141;
+	line-height: 8px;
+	word-spacing: 3px;
+	letter-spacing: 1px;
+}
+.donem,.sayacNo{
+	position: relative;
+	font-family: 'Conv_MarianinaCnFY-Medium';
+	left: 100px;
+	top:60px;
+	font-size: 8px;
+	color: #414141;
+	line-height: 8px;
+	word-spacing: 3px;
+	letter-spacing: 1px;
+}
+.tuketimGunduz,.tuketimBirimGunduz,.tuketimBirimGunduzIndOrn,.tuketimBirimGunduzInd,.tuketimGunduzTutar{
+	position: relative;
+	font-family: 'Conv_MarianinaCnFY-Medium';
+	left: 100px;
+	top:100px;
+	font-size: 8px;
+	color: #414141;
+	line-height: 8px;
+	word-spacing: 3px;
+	letter-spacing: 1px;
+	text-align: center;
+}
+.tuketimPuant,.tuketimBirimPuant,.tuketimBirimPuantIndOrn,.tuketimBirimPuantInd,.tuketimPuantTutar{
+	position: relative;
+	font-family: 'Conv_MarianinaCnFY-Medium';
+	left: 50px;
+	top:100px;
+	font-size: 8px;
+	color: #414141;
+	line-height: 8px;
+	word-spacing: 3px;
+	letter-spacing: 1px;
+	text-align: center;
+}
+.tuketimGece,.tuketimBirimGece,.tuketimBirimGeceIndOrn,.tuketimBirimGeceInd,.tuketimGeceTutar{
+	position: relative;
+	font-family: 'Conv_MarianinaCnFY-Medium';
+	left: 10px;
+	top:100px;
+	font-size: 8px;
+	color: #414141;
+	line-height: 8px;
+	word-spacing: 3px;
+	text-align: center;
+}
+.kayipKacakBirimFiyat,.specBirimFiyat,.dagitimBedeliBirimFiyat,.dagitimBedeliBirimFiyat,.iletisimBedeliBirimFiyat,.pshBedeliBirimFiyat{
+	position: relative;
+	font-family: 'Conv_MarianinaCnFY-Medium';
+	left: 160px;
+	top:141px;
+	font-size: 8px;
+	color: #414141;
+	line-height: 8px;
+	word-spacing: 3px;
+}
+.kayipKacakBirimTutar,.specBirimTutar,.dagitimBedeliBirimTutar,.dagitimBedeliBirimTutar,.iletisimBedeliBirimTutar,.pshBedeliBedeliBirimTutar{
+position: relative;
+	font-family: 'Conv_MarianinaCnFY-Medium';
+	left: 100px;
+	top:141px;
+	font-size: 8px;
+	color: #414141;
+	line-height: 8px;
+	word-spacing: 3px;
+}
+.enerjiFonuBirimFiyat,.trtPayiBirimFiyat{
+	position: relative;
+	font-family: 'Conv_MarianinaCnFY-Medium';
+	left: 85px;
+	top:184px;
+	font-size: 8px;
+	color: #414141;
+	line-height: 8px;
+	word-spacing: 3px;
+
+	text-align: center;
+}
+.enerjiFonuBirimTutar,.trtPayiBirimTutar{
+	position: relative;
+	font-family: 'Conv_MarianinaCnFY-Medium';
+	left: 15px;
+	top:184px;
+	font-size: 8px;
+	color: #414141;
+	line-height: 8px;
+	word-spacing: 3px;
+
+	text-align: center;
+}
+.toplamTutar{
+	position: relative;
+	font-family: 'Conv_MarianinaCnFY-Medium';
+	left: -5px;
+	top:205px;
+	font-size: 22px;
+	color: #414141;
+	line-height: 22px;
+	word-spacing: 3px;
+	color:#fff;
+	text-align: center;
+}
+.sonOdeme{
+	position: relative;
+	font-family: 'Conv_MarianinaCnFY-Medium';
+	left: -25px;
+	top:215px;
+	font-size: 12px;
+	color: #414141;
+	line-height: 12px;
+	word-spacing: 3px;
+	color:#fff;
+	text-align: center;
+}

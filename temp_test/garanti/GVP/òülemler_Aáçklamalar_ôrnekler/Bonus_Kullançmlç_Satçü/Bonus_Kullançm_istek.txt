@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<GVPSRequest>
+<Mode>TEST</Mode>
+<ChannelCode>S</ChannelCode>
+<Version>v0.1</Version>
+<Terminal>
+<ProvUserID>PROVAUT</ProvUserID>
+<HashData>F673333AE8CEF43430B81015A80C4921614B4427</HashData>
+<UserID>DENE</UserID>
+<ID>111995</ID>
+<MerchantID>600218</MerchantID>
+</Terminal>
+<Order>
+ <OrderID></OrderID>
+ <GroupID></GroupID>
+</Order>
+<Customer>
+<IPAddress>10.242.8.201</IPAddress>
+<EmailAddress>default@none.mail</EmailAddress>
+</Customer>
+<Card>
+<Number>kart numarası</Number>
+<ExpireDate>1212</ExpireDate>
+</Card>
+<Transaction>
+<Type>sales</Type>
+<Amount>1010</Amount>
+<CurrencyCode>949</CurrencyCode>
+<MotoInd>N</MotoInd>
+<RewardList>
+<Reward>
+<Type>BNS</Type>
+<UsedAmount>955</UsedAmount>
+</Reward>
+</RewardList>
+</Transaction>
+</GVPSRequest>

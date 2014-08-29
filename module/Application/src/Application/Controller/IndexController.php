@@ -65,7 +65,7 @@ class IndexController extends AbstractActionController {
         }
         else{
             $pageId =$this->getUrl($url);
-            //echo $url;
+           // echo $url;
             $centerBody = $this->getBody($pageId);
             
         }

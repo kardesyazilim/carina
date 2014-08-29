@@ -1,0 +1,41 @@
+<GVPSResponse>
+  <Mode /> 
+<Terminal>
+  <ProvUserID>PROVRFN</ProvUserID> 
+  <UserID>XXXX</UserID> 
+  <ID>30691292</ID> 
+  <MerchantID>3424113</MerchantID> 
+  </Terminal>
+<Customer>
+  <IPAddress>127.0.0.1</IPAddress> 
+  <EmailAddress>eticaret@garanti.com.tr</EmailAddress> 
+  </Customer>
+<Order>
+  <OrderID>SISTFA03907C0DB14A38B3BA380722891160</OrderID> 
+  <GroupID /> 
+  </Order>
+<Transaction>
+<Response>
+  <Source>GVPS</Source> 
+  <Code>92</Code> 
+  <ReasonCode>0201</ReasonCode> 
+  <Message>Declined</Message> 
+  <ErrorMsg>Ýptal edilecek iþlem bulunamadý</ErrorMsg> 
+  <SysErrMsg>ErrorId: 0201</SysErrMsg> 
+  </Response>
+  <RetrefNum /> 
+  <AuthCode /> 
+  <BatchNum>000008</BatchNum> 
+  <SequenceNum>000062</SequenceNum> 
+  <ProvDate>20130427 11:25:13</ProvDate> 
+  <CardNumberMasked /> 
+  <CardHolderName /> 
+  <CardType /> 
+  <HashData>25BC559B09802FFBDB11DDE3FCCA0A0A59EBC4B3</HashData> 
+  <HostMsgList /> 
+<RewardInqResult>
+  <RewardList /> 
+  <ChequeList /> 
+  </RewardInqResult>
+  </Transaction>
+  </GVPSResponse>

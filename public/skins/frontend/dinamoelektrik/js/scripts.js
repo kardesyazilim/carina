@@ -132,10 +132,10 @@ $(function() {
     var allPanels = $('.accordion > dd').hide();
     $(".accordion > dt").click(function(){
       $(".accordion > dd").hide();
-      $(this).unbind('click',function(){
+      //$(this).unbind('click',function(){
         //$()
         //burada kaldım
-      });
+      //});
       $(this).next().slideToggle();
     })
   

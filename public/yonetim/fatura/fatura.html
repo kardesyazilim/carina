@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+<head lang="tr">
+	<meta charset="utf-8" >
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dinamo Elektrik</title>
+	<!-- meta block -->
+	<!-- meta block -->
+	<!-- html5js -->
+	<!-- html5js -->
+
+	<!-- css block -->
+	<link rel="stylesheet" href="https://www.dinamoelektrik.com/yonetim/fatura/skins/frontend/dinamo/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://www.dinamoelektrik.com/yonetim/fatura/skins/frontend/dinamo/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="https://www.dinamoelektrik.com/yonetim/fatura/skins/frontend/dinamo/css/fonts.css">
+	<link rel="stylesheet" href="https://www.dinamoelektrik.com/yonetim/fatura/skins/frontend/dinamo/css/dinamo.css">
+
+	<!-- css block -->
+	<!-- fix block -->
+	<!-- fix block -->
+
+</head>
+<body>
+	<div id="header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12 faturaUst">
+					<div class="row">
+						<div class="col-lg-6">
+						<div class="faturaKapak">
+						<p class="faturaAdiSoyadi">Sn. {@ADSOYAD@}</p>
+						<p>{@FATURAADRESI@}</p>
+						</div>
+
+						
+
+						</div>
+						<div class="col-lg-6">
+						<div class="faturaInfo">
+							<p class="faturaInfoContent">{@SIRANO@}</p>
+							<p class="faturaInfoContent">{@FATURATARIHI@}</p>
+							<p class="faturaInfoContent">{@ABONENO@}</p>
+							<p class="faturaInfoContent">{@ABONEGRUBU@}</p>
+							<p class="faturaInfoContent">{@HESAPDONEMI@}</p>
+						</div>
+						<div class="faturaTutar">
+						<p class="faturaTutarContent">{@TOPLAMTUTAR@} TL</p>
+						<p class="faturaSonOdeme">{@SONODEME@}</p>
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="center">
+		<div class="container-fluid">
+			<div class="row linechart">
+				<div class="col-lg-8">
+				
+					<div class="row">
+					<canvas id="canvas" height="170" width="567"></canvas>
+					
+					</div>
+					<div class="row">
+						<div class="col-lg-12"><p class="priceMonth">1 Aylık Kazancınız:</p><p class="price"> {@AYLIKKAZANCINIZ@} TL</p></div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+				<p class="tarifeDesc">Standart </br> Tarife</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="ipucu">
+		<div class="container-fluid">
+				<div class="row ipucuresim">
+				</div>
+		</div>
+	</div>
+	<div id="faturaDetay">
+		<div class="container-fluid">
+			<div class="row fatBack">
+				<div class="col-lg-6">
+					<div class="row">
+					<div class="col-lg-6"><p class="faturaTarihi">{@FATURATARIHI@}</p></div>
+					<div class="col-lg-6"><p class="tuketimMiktari">{@TUKETIMMIKTARI@}</p></div>
+					</div>
+					<div class="row">
+					<div class="col-lg-6"><p class="isletmeAdi">PROPER ENERJİ</p></div>
+					<div class="col-lg-6"><p class="tuketimBirimFiyat">{@TUTKETIMBIRIMFIYAT@}</p></div>
+					</div>
+					<div class="row">
+					<div class="col-lg-6"><p class="aboneNo">{@ABONENO@}</p></div>
+					<div class="col-lg-6"><p class="donem">{@HESAPDONEMI@}</p></div>
+					</div>
+					<div class="row">
+					<div class="col-lg-6"><p class="aboneGroup">{@ABONEGRUBU@}</p></div>
+					<div class="col-lg-6"><p class="sayacNo">{@SAYACNO@}</p></div>
+					</div>
+					<div class="row">
+					<div class="col-lg-4"><p class="tuketimGunduz"> {@tuketimGunduz@}</p></div>
+					<div class="col-lg-4"><p class="tuketimPuant">  {@tuketimPuant@}</p></div>
+					<div class="col-lg-4"><p class="tuketimGece">  {@tuketimGece@}</p></div>
+					</div>
+
+					<div class="row">
+					<div class="col-lg-4"><p class="tuketimBirimGunduz">  {@tuketimBirimGunduz@}</p></div>
+					<div class="col-lg-4"><p class="tuketimBirimPuant">  {@tuketimBirimPuant@} </p></div>
+					<div class="col-lg-4"><p class="tuketimBirimGece">  {@tuketimBirimGece@} </p></div>
+					</div>
+
+					<div class="row">
+					<div class="col-lg-4"><p class="tuketimBirimGunduzIndOrn">  {@tuketimBirimGunduzIndOrn@} </p></div>
+					<div class="col-lg-4"><p class="tuketimBirimPuantIndOrn">  {@tuketimBirimPuantIndOrn@} </p></div>
+					<div class="col-lg-4"><p class="tuketimBirimGeceIndOrn">  {@tuketimBirimGeceIndOrn@} </p></div>
+					</div>
+					<div class="row">
+					<div class="col-lg-4"><p class="tuketimBirimGunduzInd">  {@tuketimBirimGunduzInd@} </p></div>
+					<div class="col-lg-4"><p class="tuketimBirimPuantInd">  {@tuketimBirimPuantInd@} </p></div>
+					<div class="col-lg-4"><p class="tuketimBirimGeceInd">  {@tuketimBirimGeceInd@} </p></div>
+					</div>
+					<div class="row">
+					<div class="col-lg-4"><p class="tuketimGunduzTutar">  {@tuketimGunduzTutar@} </p></div>
+					<div class="col-lg-4"><p class="tuketimPuantTutar">  {@tuketimPuantTutar@} </p></div>
+					<div class="col-lg-4"><p class="tuketimGeceTutar">  {@tuketimGeceTutar@} </p></div>
+					</div>
+					<div class="row">
+					<div class="col-lg-6"><p class="kayipKacakBirimFiyat"> {@KAYIPKACAKORAN@} </p></div>
+					<div class="col-lg-6"><p class="kayipKacakBirimTutar"> {@KAYIPKACAKTUTAR@}</p></div>
+					</div>
+					<div class="row">
+					<div class="col-lg-6"><p class="specBirimFiyat"> {@SPECORAN@}</p></div>
+					<div class="col-lg-6"><p class="specBirimTutar"> {@SPECTUTAR@}</p></div>
+					</div>
+					
+
+					<div class="row">
+					<div class="col-lg-6"><p class="dagitimBedeliBirimFiyat"> {@DAGITIMBEDELIORAN@} </p></div>
+					<div class="col-lg-6"><p class="dagitimBedeliBirimTutar"> {@DAGITIMBEDELITUTAR@}</p></div>
+					</div>
+					<div class="row">
+					<div class="col-lg-6"><p class="iletisimBedeliBirimFiyat"> {@ILETIMBEDELIORAN@} </p></div>
+					<div class="col-lg-6"><p class="iletisimBedeliBirimTutar"> {@ILETIMBEDELITUTAR@}</p></div>
+					</div>
+					<div class="row">
+					<div class="col-lg-6"><p class="pshBedeliBirimFiyat"> {@PSHORAN@} </p></div>
+					<div class="col-lg-6"><p class="pshBedeliBedeliBirimTutar"> {@PSHTUTAR@}</p></div>
+					</div>
+					<div class="row">
+					<div class="col-lg-6"><p class="enerjiFonuBirimFiyat"> {@ENERJIFONUORAN@} </p></div>
+					<div class="col-lg-6"><p class="enerjiFonuBirimTutar"> {@ENERJIFONUTUTAR@}</p></div>
+					</div>
+
+					<div class="row">
+					<div class="col-lg-6"><p class="trtPayiBirimFiyat"> {@TRTPAYIORAN@} </p></div>
+					<div class="col-lg-6"><p class="trtPayiBirimTutar"> {@TRTPAYITUTAR@}</p></div>
+					</div>
+					<div class="row">
+					<div class="col-lg-6"><p class="trtPayiBirimFiyat"> {@ELEKTRIKTUKETIMVERORAN@} </p></div>
+					<div class="col-lg-6"><p class="trtPayiBirimTutar"> {@ELEKTRIKTUKETIMVERTUTAR@}</p></div>
+					</div>
+
+					<div class="row">
+					<div class="col-lg-6"><p class="trtPayiBirimFiyat"> {@KESMEBAGLAMAORAN@} </p></div>
+					<div class="col-lg-6"><p class="trtPayiBirimTutar"> {@KESMEBAGLAMATUTAR@}</p></div>
+					</div>
+					<div class="row">
+					<div class="col-lg-6"><p class="trtPayiBirimFiyat"> {@GECIKMEFAIZIORAN@} </p></div>
+					<div class="col-lg-6"><p class="trtPayiBirimTutar"> {@GECIKMEFAIZITUTAR@}</p></div>
+					</div>
+
+					<div class="row">
+					<div class="col-lg-6"><p class="trtPayiBirimFiyat">{@KDVORAN@} </p></div>
+					<div class="col-lg-6"><p class="trtPayiBirimTutar">{@KDVTUTAR@}</p></div>
+					</div>
+					<div class="row">
+						<div class="col-lg-6"></div>
+						<div class="col-lg-6"><p class="toplamTutar"> {@TOPLAMTUTAR@} TL</p></div>
+					
+					</div>
+ 
+					<div class="row">
+						<div class="col-lg-6"></div>
+						<div class="col-lg-6"><p class="sonOdeme"> {@SONODEME@}</p></div>
+					
+					</div>
+
+
+					
+				</div>
+				<div class="col-lg-6"></div>
+			</div>
+		</div>
+	</div>
+	<!-- javascript library -->
+	<script src="https://www.dinamoelektrik.com/yonetim/fatura/skins/frontend/dinamo/js/jquery.min.js"></script>
+	<script src="https://www.dinamoelektrik.com/yonetim/fatura/skins/frontend/dinamo/js/bootstrap.min.js"></script>
+	<script src="https://www.dinamoelektrik.com/yonetim/fatura/skins/frontend/dinamo/js/chart.js"></script>
+	<script src="https://www.dinamoelektrik.com/yonetim/fatura/skins/frontend/dinamo/js/fatura.js"></script>
+
+
+	<!-- javascript library -->
+	<!-- javascript -->
+	<!-- javascript -->
+</body>
+</html>

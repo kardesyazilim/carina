@@ -64,6 +64,7 @@ for ($row = 1; $row <= $highestRow; $row++) {
                 $id = $k+1;
                 $mikroTempQuery = "insert into temp_invoice_mikro (progsess_id,temp_value,temp_uniq_id) values ('$id','$v','1')";
                 $db->query($mikroTempQuery);
+                
 
         }//$row
         //progsess_id
